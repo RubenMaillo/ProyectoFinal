@@ -1,0 +1,429 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+}
+
+html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: #ECECEC;
+    transition: all 0.3s;
+}
+
+#head{
+    height: 20px;
+    width: 100%;
+}
+
+/*   INICIO MENU   */
+
+.menu{
+    width: 100%;
+    height: 80px;
+    background: black;
+    font-size: 20px;
+    color: #ECECEC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+a:hover{
+    color: #941C2F;
+    transition: all 0.3s;
+}
+
+.imgLogo{
+    height: 60px;
+}
+
+.logo{
+    position: absolute;
+    left: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo h3{
+    color: #FFB049;
+}
+
+#opciones a{
+    padding: 20px;
+}
+
+#usuario a{
+    padding: 10px;
+}
+
+#usuario{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    float: center;
+    padding-right: 50px;
+}
+
+.btnRegistro{
+    color:  #941C2F !important;
+    border: 2px solid #941C2F;
+    border-radius: 10px;
+}
+
+.btnRegistro:hover{
+    color: black !important;
+    background: #941C2F;
+}
+
+.menuMin{
+    display: flex;
+    background: black;
+    width: 100%;
+    height: 80px;
+    font-size: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+#icono{
+    float: right;
+    font-size: 30px;
+    margin-right: 30px;
+    display: none;
+}
+
+@media screen and (max-width:1050px){
+    #icono{
+        margin-right: 5%;
+    }
+
+    #usuario{
+        padding-right: 0px;
+    }
+
+    .menuMin{
+        position: absolute;
+        height: 100vh;
+        width: 20em !important;
+        min-width: 20em;
+        top: 0;
+        right: -20em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        transition: all 0.7s;
+    }
+
+    .desplegar{
+        right: -20px !important;
+    }
+
+    .menuMin #opciones, .menuMin #usuario{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        text-align: center;
+    }
+
+    .menu div{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .logo, #icono{
+        width: 50%;
+    }
+
+    .iconoClose{
+        width: 100% !important;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: flex-start;
+        padding-left: -30%;
+        margin: 0;
+    }
+
+    .menuMin #icono{
+        position: absolute;
+        top: 25px;
+        padding-right: 40%;
+    }
+
+    #icono{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
+
+
+/*   FIN MENU   */
+
+/*   INICIO DE SESIÓN   */
+#inicioSesion input{
+    margin: 10px;
+    width: 300px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    background: #ECECEC;
+    border-radius: 30px;
+}
+
+#logoSesion{
+    height: 300px;
+    margin: 20px;
+}
+
+#inicioSesion p{
+    text-align: center;
+    font-size: 14px;
+}
+
+p a{
+    color: blue !important;
+}
+
+/*   FIN INICIO DE SESION   */
+
+/*   REGISTRO   */
+
+.title{
+    color: #CB3030;
+    margin-bottom: 50px;
+}
+
+#registro input{
+    margin: 10px;
+    width: 250px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    border: none;
+    background: #ECECEC;
+}
+
+/*   FIN REGISTRO   */
+
+/*   FORMULARIOS   */
+
+#inicioSesion, #registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 600px;
+    min-width: 400px;
+}
+
+#inicioSesion form, #registro form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn{
+    background: #CB3030 !important;
+    border: none;
+    color: #ECECEC;
+    border-radius: 30px;
+    cursor: pointer;
+    height: 35px !important;
+    font-size: 20px !important;
+}
+
+/*   FIN FORMULARIOS   */
+
+/*   INDEX   */
+
+.slider{
+    padding: 0;
+    margin-top: 60px;
+    width: 100%;
+    height: 50vh;
+    background: #941C2F;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.slider i{
+    color: #ECECEC;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.caratulas{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 1s;
+}
+
+.caratulas div{
+    background: #ECECEC;
+    width: 200px;
+    height: 250px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 10px;
+    transition: all 1s;
+}
+
+.caratulas div img{
+    height: 250px;
+    width: 200px;
+}
+
+.caratulas div:hover{
+    transform: scale(1.1);
+    transition: transform 0.7s;
+}
+
+.promo, .prox{
+    padding: 50px;
+}
+
+.prox{
+    background: #941C2F;
+}
+
+.prox .title{
+    color: #ECECEC !important;
+    background: #941C2F;
+}
+
+.cabecera div{
+    width: 50%;
+}
+
+.cabecera h2{
+    float: left;
+}
+
+.cabecera button{
+    float: right;
+}
+
+.verRojo{
+    background: #CB3030 !important;
+    border: none;
+    color: #ECECEC;
+    border-radius: 30px;
+    cursor: pointer;
+    height: 35px !important;
+    font-size: 15px !important;
+}
+
+.verGris{
+    background: #ECECEC !important;
+    border: none;
+    color: #CB3030;
+    border-radius: 30px;
+    cursor: pointer;
+    height: 35px !important;
+    font-size: 15px !important;
+}
+
+.cabecera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*   FIN INDEX   */
+
+/*   DETALLES PELICULA   */
+
+.detalles{
+    width: 100%;
+    height: 70vh;
+    margin-top: 60px;
+}
+
+.info{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cabecera{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.imgPelicula, .infoPeli{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgPelicula{
+    width: 30%;
+    height: 100%;
+}
+
+.infoPeli{
+    width: 70%;
+    height: 100%;
+    padding: 100px;
+}
+
+.infoPeli div{
+    width: 100%;
+    height: 100%;
+    background: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reparto{
+    width: 100%;
+    height: 50vh;
+    background: #941C2F;
+    margin-top: 60px;
+}
+
+/*   FIN DETALLES PELICULA   */
+
+/*   FOOTER   */
+
+footer{
+    bottom: 0px;
+    height: 7vh;
+    background: black;
+    color: #ECECEC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*   FIN FOOTER   */
