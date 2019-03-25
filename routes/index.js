@@ -15,11 +15,23 @@ router.get('/menu', function(req, res, next) {
 });
 
 router.get('/inicioSesion', function(req, res, next) {
-  res.render('ap', { title: 'AluCine' });
+  res.render('inicioSesion', { title: 'AluCine' });
 });
 
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
+});
+
+router.get('/cartelera', function(req, res, next) {
+  res.render('cartelera', { title: 'AluCine' });
+});
+
+router.get('/detallesPelicula', function(req, res, next) {
+  res.render('detallesPelicula', { title: 'AluCine' });
+});
+
+router.get('/promos', function(req, res, next) {
+  res.render('promos', { title: 'AluCine' });
 });
 
 module.exports = router;
