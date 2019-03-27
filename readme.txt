@@ -1,3 +1,3 @@
-Run npm install
-npm install nodemon --save
-run docker-compose up
+clone this repository
+
+run docker-compose up wherever the docker-compose.yml file is located
