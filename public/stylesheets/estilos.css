@@ -19,6 +19,11 @@ a{
     transition: all 0.3s;
 }
 
+a:hover{
+    color: #CB3030;
+    transition: all 0.3s;
+}
+
 #head{
     height: 20px;
     width: 100%;
@@ -36,11 +41,6 @@ a{
     justify-content: space-around;
     align-items: center;
     transition: all 0.5s;
-}
-
-a:hover{
-    color: #941C2F;
-    transition: all 0.3s;
 }
 
 .imgLogo{
@@ -491,17 +491,6 @@ footer{
     color: rgb(87, 87, 87);
 }
 
-/*.apLogin input{
-    border: none;
-    border-radius: 10px;
-    background: rgb(240, 240, 240);
-    font-size: 1.4em;
-    height: 2em;
-    color: rgb(61, 61, 61);
-    text-align: center;
-    margin-bottom: 1em;
-}*/
-
 .apLogin .btn{
     background: #941C2F !important;
     color: #FFB049 !important;
@@ -513,7 +502,6 @@ footer{
 
 .apLogin .btn:hover{
     background: rgba(255, 176, 73, 0.15) !important;
-    /*color: #941C2F !important;*/
     transition: all .35s;
 }
 
@@ -564,6 +552,44 @@ footer{
     bottom: 0;
     margin-top: 2.5em;
     line-height: 60px;
+}
+
+.apOpciones{
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.apOpcion{
+    width: 10em !important;
+    height: 10em !important;
+    border: 3px solid rgb(73, 73, 73);
+    border-radius: 25px;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+    color: rgb(73, 73, 73);
+    transition: all .5s;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.apOpcion:hover{
+    cursor: pointer;
+    border: 3px solid rgb(199, 28, 28);
+    color: rgb(199, 28, 28);
+    transition: all .3s;
+}
+
+.apOpcion i{
+    font-size: 60px;
 }
 
 .contenido div{

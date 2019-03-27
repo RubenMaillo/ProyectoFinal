@@ -10,6 +10,10 @@ router.get('/ap', function(req, res, next) {
   res.render('ap', { title: 'AluCine' });
 });
 
+router.get('/apIndex', function(req, res, next) {
+  res.render('apIndex', { title: 'AluCine' });
+});
+
 router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'AluCine' });
 });
