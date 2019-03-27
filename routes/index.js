@@ -34,4 +34,24 @@ router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
 
+router.get('/backUsuarios', function(req, res, next) {
+  res.render('backUsuarios', { title: 'AluCine' });
+});
+
+router.get('/backPeliculas', function(req, res, next) {
+  res.render('backPeliculas', { title: 'AluCine' });
+});
+
+router.get('/backPromos', function(req, res, next) {
+  res.render('backPromos', { title: 'AluCine' });
+});
+
+router.get('/backHorarios', function(req, res, next) {
+  res.render('backHorarios', { title: 'AluCine' });
+});
+
+router.get('/backSalas', function(req, res, next) {
+  res.render('backSalas', { title: 'AluCine' });
+});
+
 module.exports = router;
