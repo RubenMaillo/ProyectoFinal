@@ -36,7 +36,7 @@
     </section>
 
     <section class="contenido">
-        <h2 class="title">Usuarios</h2>
+        <h2 class="title">Películas</h2>
 
         <div>
             <a class="new fancybox" data-fancybox data-type="iframe" href="addmodUser">
@@ -45,7 +45,13 @@
             </a>
             
             <form action="#">
-                <input type="text">
+                <select name="año">
+                    <option value="">Año</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                </select>
+                <input type="text" placeholder="Nombre, género...">
                 <button><i class="fas fa-search"></i></button>
             </form>
 
