@@ -57,6 +57,17 @@ router.get('/backHorarios', function(req, res, next) {
 router.get('/backSalas', function(req, res, next) {
   res.render('backSalas', { title: 'AluCine' });
 });
+
+router.get('/mantenimiento', function(req, res, next) {
+  res.render('mantenimiento', { title: 'AluCine' });
+});
+
+
+
+
+
+
+
 router.get('/backUsuarios', function(req, res, next) {
 
   const mongoose = require('mongoose');
