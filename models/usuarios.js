@@ -15,4 +15,17 @@ var usuarioSchema = new Schema({
 });
 
 var Usuario = mongoose.model('usuario', usuarioSchema);
+async function addUsu(){
+    const usu = new Usuario({
+        dni:'45199304A',
+        nombre:'ivan',
+        apellidos:'branson',
+        email:'ivanbranson48@gmail.com',
+        password: '1234',
+        tipo:'admin',
+        alucineCard: true,
+        puntos: 12345
+     });
+     const result = await usu.save();
+}
 module.exports = Usuario;

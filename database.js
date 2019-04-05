@@ -12,7 +12,7 @@ exports.verusus = async function(){
     console.log(usus)
     return usus;
  }
- exports.addUsu = async function(){
+ /*exports.addUsu = async function(){
      const usu = new Usuario({
         dni:'45199304A',
         nombre:'ivan',
@@ -25,4 +25,4 @@ exports.verusus = async function(){
      });
      const result = await usu.save();
      console.log(result);
- }
+ }*/
