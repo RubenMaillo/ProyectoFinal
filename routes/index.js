@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./../models/usuarios');
+var userDatabase = require('./../models/usuarios.database');
 //importar models
 
 
@@ -41,9 +41,13 @@ router.get('/detallesPelicula', function(req, res, next) {
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
-
+router.post('/addUsuario', async function(req, res, next) {
+  var usus = await userDatabase.addUsu()
+  console.log(usus)
+    
+  });
 router.get('/backUsuarios', async function(req, res, next) {
-  var usus = await database.verusus()
+  var usus = await userDatabase.verusus()
    console.log(usus);
     res.render('backUsuarios',  { usus: usus } );
     

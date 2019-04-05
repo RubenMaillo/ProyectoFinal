@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Usuario = require('./models/usuarios')
+const Usuario = require('./usuarios')
 
 exports.initializeMongo = function(){
             mongoose.connect('mongodb://mongo/usuarioss',{useNewUrlParser:true})
