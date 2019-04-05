@@ -25,4 +25,8 @@ exports.verusus = async function(){
      });
      const result = await usu.save();
      console.log(result);
+<<<<<<< HEAD
  }*/
+=======
+ }
+>>>>>>> 0d136ea4f1d0d569cc0156f1940259bdf6cba04b
