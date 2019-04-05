@@ -49,8 +49,6 @@ router.get('/backUsuarios', async function(req, res, next) {
     
   });
 
-
-  
 router.get('/backPeliculas', function(req, res, next) {
   res.render('backPeliculas', { title: 'AluCine' });
 });
