@@ -49,8 +49,6 @@ router.get('/backUsuarios', async function(req, res, next) {
     res.render('backUsuarios',  { usus: usus } );
   });
 
-
-  
 router.get('/backPeliculas', function(req, res, next) {
   res.render('backPeliculas', { title: 'AluCine' });
 });

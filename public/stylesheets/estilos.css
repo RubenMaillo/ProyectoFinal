@@ -361,6 +361,10 @@ p a{
     width: 100%;
     height: 70vh;
     margin-top: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .info{
@@ -407,9 +411,43 @@ p a{
 
 .reparto{
     width: 100%;
-    height: 50vh;
+    height: 50%;
     background: #941C2F;
     margin-top: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.actor{
+    border: 2px solid #ECECEC;
+    border-radius: 10px;
+    width: 15em;
+    height: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(236, 236, 236, 0.3);
+}
+
+.actor img{
+    width: 70%;
+    max-height: 70%;
+    border-radius: 5px;
+}
+
+.actor div{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trailer{
+    width: 5em;
+    height: 2em;
 }
 
 /*   FIN DETALLES PELICULA   */
@@ -672,3 +710,13 @@ button:hover{
 }
 
 /*   FIN AREA PRVADA  */
+
+.mantenimiento{
+    width: 100%;
+    height: 100%;
+}
+
+.mantenimiento img{
+    width: 100%;
+    height: 100%;
+}

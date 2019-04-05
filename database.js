@@ -8,7 +8,7 @@ exports.initializeMongo = function(){
 }
 
 exports.verusus = async function(){
-    const usus = await Usuario.findOne({dni:'74854841E'});
+    const usus = await Usuario.findOne({dni:'45199417R'});
     console.log(usus)
     return usus;
  }
