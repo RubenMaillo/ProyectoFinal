@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var Usuario = require('./models/usuarios')
+const Usuario = require('./models/usuarios')
 
 exports.initializeMongo = function(){
             mongoose.connect('mongodb://mongo/usuarioss',{useNewUrlParser:true})
@@ -8,8 +8,21 @@ exports.initializeMongo = function(){
 }
 
 exports.verusus = async function(){
-    const usus = await Usuario.findOne({dni:'74854841E'});
+    const usus = await Usuario.findOne({dni:'45199304A'});
     console.log(usus)
     return usus;
  }
- 
+ exports.addUsu = async function(){
+     const usu = new Usuario({
+        dni:'45199304A',
+        nombre:'ivan',
+        apellidos:'branson',
+        email:'ivanbranson48@gmail.com',
+        password: '1234',
+        tipo:'admin',
+        alucineCard: true,
+        puntos: 12345
+     });
+     const result = await usu.save();
+     console.log(result);
+ }

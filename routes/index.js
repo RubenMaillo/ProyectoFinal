@@ -43,14 +43,12 @@ router.get('/promos', function(req, res, next) {
 });
 
 router.get('/backUsuarios', async function(req, res, next) {
- 
   var usus = await database.verusus()
    console.log(usus);
     res.render('backUsuarios',  { usus: usus } );
+    
   });
 
-
-  
 router.get('/backPeliculas', function(req, res, next) {
   res.render('backPeliculas', { title: 'AluCine' });
 });

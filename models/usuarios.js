@@ -14,5 +14,5 @@ var usuarioSchema = new Schema({
     puntos: {type:Number, required:[true,'juisjuis']}
 });
 
-var Usuario = mongoose.model('usuarios', usuarioSchema);
+var Usuario = mongoose.model('usuario', usuarioSchema);
 module.exports = Usuario;
