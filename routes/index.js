@@ -38,9 +38,9 @@ router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
 
-router.get('/backUsuarios', function(req, res, next) {
+/*router.get('/backUsuarios', function(req, res, next) {
   res.render('backUsuarios', { title: 'AluCine' });
-});
+});*/
 
 router.get('/backPeliculas', function(req, res, next) {
   res.render('backPeliculas', { title: 'AluCine' });
@@ -57,5 +57,32 @@ router.get('/backHorarios', function(req, res, next) {
 router.get('/backSalas', function(req, res, next) {
   res.render('backSalas', { title: 'AluCine' });
 });
+router.get('/backUsuarios', function(req, res, next) {
 
+  const mongoose = require('mongoose');
+  
+  mongoose.connect('mongodb://localhost/usuarios',{useNewUrlParser:true})
+      .then(() => 'WEEE!')
+      .catch(err => console.error('Eppa', err));
+  
+  var nomb = "Rubeno";
+  async function guardarUsu(){
+      const usu = new Usuario({
+      nombre: nomb,
+      apellidos:"El Moreno",
+      edad:44,
+      ciudad:["poralli","poraqui"]
+  });
+  const result = await usu.save();
+  }
+  guardarUsu();
+  
+  async function verusus(){
+    const usus = Usuario.find();
+    return usus;
+  }
+   usus = verusus();
+   console.log(usus);
+    res.render('backUsuarios', { usus });
+  });
 module.exports = router;
