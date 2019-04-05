@@ -12,7 +12,7 @@ exports.verusus = async function(){
     console.log(usus)
     return usus;
  }
- exports.addUsu = async function(){
+ exports.addUsu = async function(arrayUsu){
      const usu = new Usuario({
         dni:'45199304A',
         nombre:'ivan',
