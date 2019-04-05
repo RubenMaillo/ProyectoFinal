@@ -43,10 +43,10 @@ router.get('/promos', function(req, res, next) {
 });
 
 router.get('/backUsuarios', async function(req, res, next) {
- 
   var usus = await database.verusus()
    console.log(usus);
     res.render('backUsuarios',  { usus: usus } );
+    
   });
 
 
