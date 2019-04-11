@@ -3,7 +3,7 @@ const Usuario = require('../models/usuarios')
 
 exports.initializeMongo = function(){
             mongoose.connect('mongodb://mongo/usuarios',{useNewUrlParser:true})
-            .then(() => console.log('WEEEkiwkikiwiwi!'))
+            .then(() => console.log('WEEE!'))
             .catch(err => console.error('Eppa', err));
 }
 
