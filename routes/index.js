@@ -22,10 +22,13 @@ router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'AluCine' });
 });
 
-router.get('/inicioSesion', function(req, res, next) {
+router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
-
+router.post('/iniSession', function(req, res,) {  
+  databaseUsuarios.sessionUsu(req);
+  res.redirect('/');
+});
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
 });
