@@ -258,7 +258,6 @@ p a{
 
 .slider{
     padding: 0;
-    margin-top: 60px;
     width: 100%;
     height: 50vh;
     background: #941C2F;
@@ -356,7 +355,9 @@ p a{
 /*   FIN INDEX   */
 
 /*   DETALLES PELICULA   */
-
+.esp{
+    margin-left: 10%;
+}
 .detalles{
     width: 100%;
     height: 70vh;
@@ -389,9 +390,27 @@ p a{
     align-items: center;
 }
 
+.infoPeli div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.infoPeli p{
+    width: 100%;
+    font-size: 15px;
+}
+
 .imgPelicula{
     width: 30%;
     height: 100%;
+}
+
+.imgPelicula img{
+    height: 90%;
 }
 
 .infoPeli{
