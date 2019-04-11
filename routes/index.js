@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userDatabase = require('./../models/usuarios.database');
+var databaseUsuarios = require('./../databases/databaseUsuario')
 //importar models
 
 
@@ -42,9 +43,15 @@ router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
 router.post('/addUsuario', async function(req, res, next) {
-  var usus = await userDatabase.addUsu()
-  console.log(usus)
-    
+  
+  contra1 = req.body.pass;
+  contra2 = req.body.pass2;
+  if(contra1 != contra2){
+    res.send("La contraseña tiene que ser igual");
+  }else{
+    await databaseUsuarios.addUsu(req);
+  }
+    res.redirect('/');
   });
 router.get('/backUsuarios', async function(req, res, next) {
   var usus = await userDatabase.verusus()
