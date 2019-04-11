@@ -19,6 +19,11 @@ a{
     transition: all 0.3s;
 }
 
+a:hover{
+    color: #CB3030;
+    transition: all 0.3s;
+}
+
 #head{
     height: 20px;
     width: 100%;
@@ -36,11 +41,6 @@ a{
     justify-content: space-around;
     align-items: center;
     transition: all 0.5s;
-}
-
-a:hover{
-    color: #941C2F;
-    transition: all 0.3s;
 }
 
 .imgLogo{
@@ -361,6 +361,10 @@ p a{
     width: 100%;
     height: 70vh;
     margin-top: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .info{
@@ -407,9 +411,43 @@ p a{
 
 .reparto{
     width: 100%;
-    height: 50vh;
+    height: 50%;
     background: #941C2F;
     margin-top: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.actor{
+    border: 2px solid #ECECEC;
+    border-radius: 10px;
+    width: 15em;
+    height: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(236, 236, 236, 0.3);
+}
+
+.actor img{
+    width: 70%;
+    max-height: 70%;
+    border-radius: 5px;
+}
+
+.actor div{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trailer{
+    width: 5em;
+    height: 2em;
 }
 
 /*   FIN DETALLES PELICULA   */
@@ -491,17 +529,6 @@ footer{
     color: rgb(87, 87, 87);
 }
 
-/*.apLogin input{
-    border: none;
-    border-radius: 10px;
-    background: rgb(240, 240, 240);
-    font-size: 1.4em;
-    height: 2em;
-    color: rgb(61, 61, 61);
-    text-align: center;
-    margin-bottom: 1em;
-}*/
-
 .apLogin .btn{
     background: #941C2F !important;
     color: #FFB049 !important;
@@ -513,7 +540,6 @@ footer{
 
 .apLogin .btn:hover{
     background: rgba(255, 176, 73, 0.15) !important;
-    /*color: #941C2F !important;*/
     transition: all .35s;
 }
 
@@ -566,6 +592,44 @@ footer{
     line-height: 60px;
 }
 
+.apOpciones{
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.apOpcion{
+    width: 10em !important;
+    height: 10em !important;
+    border: 3px solid rgb(73, 73, 73);
+    border-radius: 25px;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+    color: rgb(73, 73, 73);
+    transition: all .5s;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.apOpcion:hover{
+    cursor: pointer;
+    border: 3px solid rgb(199, 28, 28);
+    color: rgb(199, 28, 28);
+    transition: all .3s;
+}
+
+.apOpcion i{
+    font-size: 60px;
+}
+
 .contenido div{
     width: 100%;
     height: 90%;
@@ -601,7 +665,7 @@ footer{
     font-size: 1.5em;
 }
 
-.contenido form input{
+.contenido form input, .contenido form select{
     background: rgb(190, 190, 190);
     border: none;
     border-radius: 10px;
@@ -609,7 +673,7 @@ footer{
     font-size: 1.4em;
     width: 20%;
     height: 1.75em;
-    color: rgb(61, 61, 61);
+    color: rgb(85, 85, 85);
 }
 
 button:hover{
@@ -646,3 +710,13 @@ button:hover{
 }
 
 /*   FIN AREA PRVADA  */
+
+.mantenimiento{
+    width: 100%;
+    height: 100%;
+}
+
+.mantenimiento img{
+    width: 100%;
+    height: 100%;
+}

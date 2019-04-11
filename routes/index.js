@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var userDatabase = require('./../models/usuarios.database');
+//importar models
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,6 +12,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/ap', function(req, res, next) {
   res.render('ap', { title: 'AluCine' });
+});
+
+router.get('/apIndex', function(req, res, next) {
+  res.render('apIndex', { title: 'AluCine' });
 });
 
 router.get('/menu', function(req, res, next) {
@@ -32,6 +40,33 @@ router.get('/detallesPelicula', function(req, res, next) {
 
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
+});
+router.post('/addUsuario', async function(req, res, next) {
+  var usus = await userDatabase.addUsu()
+  console.log(usus)
+    
+  });
+router.get('/backUsuarios', async function(req, res, next) {
+  var usus = await userDatabase.verusus()
+   console.log(usus);
+    res.render('backUsuarios',  { usus: usus } );
+    
+  });
+
+router.get('/backPeliculas', function(req, res, next) {
+  res.render('backPeliculas', { title: 'AluCine' });
+});
+
+router.get('/backPromos', function(req, res, next) {
+  res.render('backPromos', { title: 'AluCine' });
+});
+
+router.get('/backHorarios', function(req, res, next) {
+  res.render('backHorarios', { title: 'AluCine' });
+});
+
+router.get('/backSalas', function(req, res, next) {
+  res.render('backSalas', { title: 'AluCine' });
 });
 
 module.exports = router;
