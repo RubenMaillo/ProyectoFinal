@@ -41,6 +41,7 @@ router.get('/detallesPelicula', function(req, res, next) {
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
+
 router.post('/addUsuario', async function(req, res, next) {
   
   contra1 = req.body.pass;
@@ -52,6 +53,7 @@ router.post('/addUsuario', async function(req, res, next) {
   }
     res.redirect('/');
   });
+  
 router.get('/backUsuarios', async function(req, res, next) {
   var usus = await databaseUsuarios.verusus()
    console.log(usus);
