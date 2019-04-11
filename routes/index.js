@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./../database');
+var databaseUsuarios = require('./../databases/databaseUsuario')
 //importar models
 
 
@@ -22,10 +22,14 @@ router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'AluCine' });
 });
 
-router.get('/inicioSesion', function(req, res, next) {
+router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
-
+router.post('/iniSession', function(req, res) {  
+  var usu =  databaseUsuarios.sessionUsu(req).then();
+  console.log(usu);
+  res.redirect('/');
+});
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
 
@@ -45,9 +49,19 @@ router.get('/detallesPelicula', function(req, res, next) {
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
-
+router.post('/addUsuario', async function(req, res, next) {
+  
+  contra1 = req.body.pass;
+  contra2 = req.body.pass2;
+  if(contra1 != contra2){
+    res.send("La contraseña tiene que ser igual");
+  }else{
+    await databaseUsuarios.addUsu(req);
+  }
+    res.redirect('/');
+  });
 router.get('/backUsuarios', async function(req, res, next) {
-  var usus = await database.verusus()
+  var usus = await databaseUsuarios.verusus()
    console.log(usus);
     res.render('backUsuarios',  { usus: usus } );
     

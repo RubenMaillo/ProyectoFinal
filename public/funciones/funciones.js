@@ -23,7 +23,3 @@ function esconderMenu(){
     document.getElementById("menuMin").style.right = "-20em";
 }
 
-$(function(){
-    $("#head").load("menu"); 
-});
-
