@@ -34,9 +34,6 @@ router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
 
 });
-router.post('/addUsuario', async function(req, res, next) {
-  await database.addUsu();
-});
 
 router.get('/cartelera', function(req, res, next) {
   res.render('cartelera', { title: 'AluCine' });
