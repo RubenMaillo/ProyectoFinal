@@ -1,32 +1,26 @@
-<header id="head">
-<div class="menu">
-  <a class="logo" href="/">
-      <img class="imgLogo" src="imagenes/AluCine1.png" alt="logo AluCine">
-      &nbsp;
-      &nbsp;
-      <h3 id="nombreLogo">AluCine</h3>
-  </a>
+<header class="flex">
+    <div class="flex logo">
+        <a href="/">
+            <img src="imagenes/AluCine1.png" alt="">
+            <h3>AluCine</h3>
+        </a>
+    </div>
+    <nav id="opcionesMenu" class="flex">
+        <ul class="flex">
+            <li><a href="estrenos">Estrenos</a></li>
+            <li><a href="cartelera">Cartelera</a></li>
+            <li><a href="promos">Promos</a></li>
+            <li><a href="#">Buscar</a></li>
+        </ul>
 
-  <div class="menuMin" id="menuMin">
-      <div id="icono" class="iconoClose">
-          <a href="#"><i onclick="esconderMenu()" class="fas fa-times"></i></a>
-      </div>
-
-      <nav id="opciones">
-          <a href="estrenos">Estrenos</a>
-          <a href="cartelera">Cartelera</a>
-          <a href="promos">Promos</a>
-          <a href="#">Buscar</a>
-      </nav>
-      
-      <div id="usuario">
-          <a href="inicioSesion" class="fancybox" data-fancybox data-type="iframe">Sign in</a>
-          <a class="btnRegistro" href="registro" class="fancybox" data-fancybox data-type="iframe">Sign up</a>
-      </div>
-  </div>
-  
-  <div id="icono">
-      <a href="#"><i onclick="desplegarMenu()" class="fas fa-bars"></i></a>
-  </div>
-</div>
+        <ul id="usuario">
+            <li><a href="inicioSesion" class="fancybox" data-fancybox data-type="iframe">Sign in</a></li>
+            <li><a class="btnRegistro" href="registro" class="fancybox" data-fancybox data-type="iframe">Sign up</a></li>
+        </ul>
+    </nav>
+    <div class="flex bars" onclick="desplegarMenu()">
+        <div id="iconHamburger" class="hamburger flex">
+            <div class="medio"></div>
+        </div>
+    </div>
 </header>

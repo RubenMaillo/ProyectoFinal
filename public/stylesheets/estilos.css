@@ -24,43 +24,45 @@ a:hover{
     transition: all 0.3s;
 }
 
-#head{
-    height: 20px;
-    width: 100%;
-}
-
-/*   INICIO MENU   */
-
-.menu{
-    width: 100%;
-    height: 80px;
-    background: black;
-    font-size: 20px;
-    color: #ECECEC;
+.flex{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    transition: all 0.5s;
 }
 
-.imgLogo{
-    height: 60px;
-}
+/*   INICIO MENÚ   */
 
-.logo{
+header{
     position: absolute;
-    left: 50px;
+    width: 100%;
+    height: 13vh;
+    background:black;
+    z-index: 100;
+}
+
+header li:hover a{
+    color: #941C2F !important;
+    transition: all .3s;
+}
+
+header div{
+    width: 15vw;
+    height: 100%;
+}
+
+header .logo{
+    margin-left: 5em;
+}
+
+header .logo a{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
 .logo h3{
     color: #FFB049;
-}
-
-#opciones a{
-    padding: 20px;
+    padding-left: 10px;
 }
 
 #usuario a{
@@ -68,113 +70,208 @@ a:hover{
 }
 
 #usuario{
-    width: 30%;
+    width: 20%;
     display: flex;
     justify-content: flex-end;
     float: center;
     padding-right: 50px;
 }
 
+#usuario li{
+    padding: 0 !important;
+}
+
 .btnRegistro{
     color:  #941C2F !important;
     border: 2px solid #941C2F;
     border-radius: 10px;
+    transition: all .5s;
 }
 
 .btnRegistro:hover{
-    color: black !important;
-    background: #941C2F;
+    color:  black !important;
+    background: #941C2F !important;
+    transition: all .5s;
 }
 
-.menuMin{
-    display: flex;
-    background: black;
-    width: 100%;
-    height: 80px;
-    font-size: 20px;
-    justify-content: flex-end;
-    align-items: center;
-    transition: all 0.5s;
+header nav{
+    width: 85vw;
+    height: 100%;
+    justify-content: flex-end !important;
 }
 
-#icono{
+header img{
+    width: 3em;
+    animation: rotar 1.5s;
+}
+
+nav ul{
     float: right;
-    font-size: 30px;
-    margin-right: 30px;
-    display: none;
+    margin-right: 5em;
 }
 
-@media screen and (max-width:1050px){
-    #icono{
-        margin-right: 5%;
-    }
+nav li{
+    list-style: none;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    padding-right: 2em;
+    padding-left: 2em;
+    letter-spacing: 0.25em;
+    line-height: 2em;
+    position: relative;
+    cursor: pointer;
+    color: white;
+}
 
-    #usuario{
-        padding-right: 0px;
-    }
+nav li::before{
+    content: "";
+    width: 0;
+    height: 0.15em;
+    background: #941C2F;
+    position: absolute;
+    left: 2%;
+    bottom: 0;
+    transition: all 1s;
+}
 
-    .menuMin{
-        position: absolute;
-        height: 100vh;
-        width: 20em !important;
-        min-width: 20em;
-        top: 0;
-        right: -20em;
+nav li:hover::before{
+    width: 97%;
+    transition: all 1s;
+}
+
+@keyframes rotar{
+    0%{
+        transform: rotate(0deg);
+    }
+    
+    100%{
+        transform: rotate(360deg);
+    }    
+}
+
+.bars{
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger{
+    width: 3em;
+    height: 3em;
+    margin-right: 4em;
+    flex-direction: column;
+    transition: all 1s;
+}
+
+.medio{
+    width: 2em !important;
+    height: 0.20em;
+    background: white;
+    position: relative;
+}
+
+.medio::after, .medio::before{
+    position: absolute;
+    content: "";
+    width: 2em;
+    height: 0.20em;
+    background: white;
+}
+
+.medio::after{
+    top: 0.55em;
+}
+
+.medio::before{
+    bottom: 0.55em;
+}
+
+.hamburger:hover .medio{
+    background: #941C2F;
+    transition: all .3s;
+}
+
+.hamburger:hover .medio::after, .activado:hover .medio::after{
+    background: #941C2F;
+    transition: all .3s;
+}
+
+.hamburger:hover .medio::before, .activado:hover .medio::before{
+    background: #941C2F;    
+    transition: all .3s;
+}
+
+.activado .medio{
+    background: transparent;
+    transition: all .3s;
+}
+
+.activado .medio::after{
+    top:0;
+    transform: rotate(45deg);
+    transition: all 1s;
+}
+
+.activado .medio::before{
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: all 1s;
+}
+
+@media screen and (max-width: 1393px){
+    .bars{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: black;
-        transition: all 0.7s;
+        justify-content: flex-end;
+        margin-right: 2em;
+        z-index: 101;
     }
 
-    .desplegar{
-        right: -20px !important;
-    }
-
-    .menuMin #opciones, .menuMin #usuario{
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-        text-align: center;
-    }
-
-    .menu div{
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-    }
-
-    .logo, #icono{
-        width: 50%;
-    }
-
-    .iconoClose{
-        width: 100% !important;
+    header div{
+        width: 50% !important;
     }
 
     .logo{
-        display: flex;
         justify-content: flex-start;
-        padding-left: -30%;
+        margin-left: 2em !important;
+    }
+
+    nav{
+        position: absolute;
+        background: black;
+        top: 0;
+        right: -100%;
+        width: 100% !important;
+        height: 100vh !important;
+        transition: right 0.7s;
+    }
+
+    .desplegado{
+        right: 0 !important;
+    }
+
+    nav ul{
+        margin: 0 !important;
+        top: 0 !important;
+        padding: 0 !important;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li{
+        margin: 5%;
+    }
+
+    nav ul li::before{
+        background: #941C2F;
+    }
+
+    .hamburger, .activado{
+        width: 3em !important;
+        height: 3em !important;
         margin: 0;
     }
-
-    .menuMin #icono{
-        position: absolute;
-        top: 25px;
-        padding-right: 40%;
-    }
-
-    #icono{
-        display: flex;
-        justify-content: flex-end;
-    }
-
 }
 
-
-/*   FIN MENU   */
+/*   FIN MENÚ   */
 
 /*   INICIO DE SESIÓN   */
 #inicioSesion input{
