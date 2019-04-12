@@ -38,3 +38,9 @@ exports.verusus = async function(){
  exports.test = async function(req){
    await console.log(req)
  }
+ exports.busquedaUsus = async function(req){
+    var usu = await Usuario.find({
+       email:"/"+req.body.busqueda+"/" 
+    });
+    console.log("EMAIL: "+usu[0]);
+ }

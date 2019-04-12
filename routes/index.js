@@ -66,8 +66,14 @@ router.get('/backUsuarios', async function(req, res, next) {
     console.log(usu['dni']);
   });
     res.render('backUsuarios',  { usus: usus } );
-    
   });
+
+
+router.post('/busquedaUsuarios', async function(req,res){
+  var usus = await databaseUsuarios.busquedaUsus(req);
+res.render('backUsuarios',  {  title: 'AluCine' } );
+});
+
 
 router.get('/backPeliculas', function(req, res, next) {
   res.render('backPeliculas', { title: 'AluCine' });
