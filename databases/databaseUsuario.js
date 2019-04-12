@@ -32,7 +32,8 @@ exports.verusus = async function(){
         email: req.body.user,
         password: req.body.pass
         });
-    console.log(usu[0].nombre);
+    //console.log(usu[0]);
+    return usu[0];
     
  }
  exports.test = async function(req){
