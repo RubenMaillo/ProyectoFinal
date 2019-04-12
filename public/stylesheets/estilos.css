@@ -869,7 +869,7 @@ button:hover{
 }
 
 #cartelera div{
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -40,6 +40,10 @@ router.get('/cartelera', function(req, res, next) {
   res.render('cartelera', { title: 'AluCine' });
 });
 
+router.get('/estrenos', function(req, res, next) {
+  res.render('estrenos', { title: 'AluCine' });
+});
+
 router.get('/detallesPelicula', function(req, res, next) {
   res.render('detallesPelicula', { title: 'AluCine' });
 });
