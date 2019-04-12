@@ -27,7 +27,6 @@ router.get('/inicioSesion', function(req, res, next) {
 });
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-  //console.log(usu.nombre);
   res.send(usu.nombre+'<br>'+usu.apellidos);
 });
 router.get('/registro', function(req, res, next) {
@@ -61,7 +60,9 @@ router.post('/addUsuario', async function(req, res, next) {
   
 router.get('/backUsuarios', async function(req, res, next) {
   var usus = await databaseUsuarios.verusus()
-   console.log(usus);
+  usus.forEach(function(usu){
+    console.log(usu['dni']);
+  });
     res.render('backUsuarios',  { usus: usus } );
     
   });

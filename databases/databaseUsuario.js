@@ -8,8 +8,7 @@ exports.initializeMongo = function(){
 }
 
 exports.verusus = async function(){
-    var usus = await Usuario.find({dni:'45199304A'});
-    console.log(usus)
+    var usus = await Usuario.find();
     return usus;
  }
  exports.addUsu = async function(req){
