@@ -25,11 +25,13 @@ router.get('/menu', function(req, res, next) {
 router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
+
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
   console.log(usu.nombre);
   res.redirect('/');
 });
+
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
 
