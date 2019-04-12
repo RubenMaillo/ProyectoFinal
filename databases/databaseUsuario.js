@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var sessionstorage = require('sessionstorage');
 const Usuario = require('../models/usuarios')
 
 exports.initializeMongo = function(){
@@ -33,6 +34,7 @@ exports.verusus = async function(){
         password: req.body.pass
         });
     //console.log(usu[0]);
+    sessionstorage.setItem('email', usu[0].email);
     return usu[0];
     
  }
