@@ -62,16 +62,13 @@ router.post('/addUsuario', async function(req, res, next) {
   
 router.get('/backUsuarios', async function(req, res, next) {
   var usus = await databaseUsuarios.verusus()
-  usus.forEach(function(usu){
-    console.log(usu['dni']);
-  });
-    res.render('backUsuarios',  { usus: usus } );
+  res.render('backUsuarios',  { usus: usus } );
   });
 
 
 router.post('/busquedaUsuarios', async function(req,res){
   var usus = await databaseUsuarios.busquedaUsus(req);
-res.render('backUsuarios',  {  title: 'AluCine' } );
+res.render('backUsuarios',  { usus:usus } );
 });
 
 
