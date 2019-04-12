@@ -27,10 +27,15 @@ exports.verusus = async function(){
     var result = await usu.save();
     console.log(result);
 }
- exports.sessionUsu = async function(email,pass){
+ exports.sessionUsu = async function(req){
     var usu = await Usuario.find({
-        email: email,
-        password: pass
+        email: req.body.user,
+        password: req.body.pass
         });
-    console.log('wawla'+usu['_id']);
+    //console.log(usu[0]);
+    return usu[0];
+    
+ }
+ exports.test = async function(req){
+   await console.log(req)
  }

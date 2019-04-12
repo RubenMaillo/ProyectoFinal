@@ -22,12 +22,17 @@ router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'AluCine' });
 });
 
-router.get('/inicioSesion', function(req, res, next) {
+router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
-
+router.post('/iniSession', async function(req, res) {  
+  var usu =  await databaseUsuarios.sessionUsu(req);
+  console.log(usu.nombre);
+  res.redirect('/');
+});
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
+
 });
 
 router.get('/cartelera', function(req, res, next) {
@@ -76,5 +81,6 @@ router.get('/backHorarios', function(req, res, next) {
 router.get('/backSalas', function(req, res, next) {
   res.render('backSalas', { title: 'AluCine' });
 });
+
 
 module.exports = router;
