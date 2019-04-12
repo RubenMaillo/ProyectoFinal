@@ -28,8 +28,8 @@ router.get('/inicioSesion', function(req, res, next) {
 
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-  console.log(usu.nombre);
-  res.redirect('/');
+  //console.log(usu.nombre);
+  res.send(usu.nombre+'<br>'+usu.apellidos);
 });
 
 router.get('/registro', function(req, res, next) {
