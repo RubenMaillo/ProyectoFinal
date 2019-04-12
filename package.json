@@ -16,10 +16,10 @@
     "ejs": "~2.5.7",
     "express": "^4.16.4",
     "express-generator": "^4.16.0",
+    "express-session": "^1.16.1",
     "http-errors": "~1.6.2",
     "mongoose": "^5.4.18",
     "morgan": "~1.9.0",
-    "nodemon": "^1.18.10",
-    "sessionstorage": "^0.1.0"
+    "nodemon": "^1.18.10"
   }
 }

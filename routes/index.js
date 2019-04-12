@@ -1,4 +1,3 @@
-var sessionstorage = require('sessionstorage');
 var express = require('express');
 var router = express.Router();
 var databaseUsuarios = require('./../databases/databaseUsuario')
@@ -9,6 +8,9 @@ var databaseUsuarios = require('./../databases/databaseUsuario')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  //if(req.session.user!=undefined){
+    console.log(req.session.user+' hey hey')
+  //}
   res.render('index', { title: 'Express' });
 });
 
@@ -29,7 +31,9 @@ router.get('/inicioSesion', function(req, res, next) {
 });
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-  //console.log(usu.nombre);
+  //console.log(usu.email+' pipo');
+  req.session.user = usu.email;
+  //res.render('index',{username:usu.email})
   res.send(usu.nombre+'<br>'+usu.apellidos);
 });
 router.get('/registro', function(req, res, next) {
