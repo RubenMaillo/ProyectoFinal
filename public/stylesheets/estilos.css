@@ -838,3 +838,50 @@ button:hover{
     width: 100%;
     height: 100%;
 }
+
+
+/*   CARTELERA   */
+
+#cartelera{
+    background: #941C2F;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 110px !important; 
+    width: 100%;
+    height: 100%;
+}
+
+.cabecera2{
+    margin-top: 220px;
+}
+
+.cabecera2 h2{
+    text-transform: uppercase;
+    color: #ECECEC;
+    letter-spacing: .2em;
+    font-size: 2em;
+}
+
+.peliculas{
+    margin-top: 50px;
+}
+
+#cartelera div{
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#cartelera div a{
+    margin-bottom: 3em; 
+}
+
+#cartelera div img{
+    width: 250px;
+}
+
+/*   CARTELERA   */
