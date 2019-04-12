@@ -56,7 +56,14 @@
                     <th>Apellidos</th>
                     <th>email</th>
                 </tr>
-
+                <% for(var i=0; i< usus.length; i++){%>
+                    <tr>
+                        <td><%= usus[i].dni %></td>
+                        <td><%= usus[i].nombre %></td>
+                        <td><%= usus[i].apellidos %></td>
+                        <td><%= usus[i].email %></td>
+                    </tr>
+                    <% }; %>
                 <tr>
                     <td>44953619E</td>
                     <td>Juan</td>
