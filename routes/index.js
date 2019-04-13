@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var databaseUsuarios = require('./../databases/databaseUsuario')
+var databaseUsuarios = require('./../databases/databaseUsuario');
+var databaseSalas = require('./../databases/databaseSala');
 //importar models
 
 
@@ -33,7 +34,6 @@ router.post('/iniSession', async function(req, res) {
 
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
-
 });
 
 router.get('/cartelera', function(req, res, next) {
@@ -47,7 +47,7 @@ router.get('/detallesPelicula', function(req, res, next) {
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
-
+//backUsuario
 router.post('/addUsuario', async function(req, res, next) {
   
   contra1 = req.body.pass;
@@ -61,7 +61,7 @@ router.post('/addUsuario', async function(req, res, next) {
   });
   
 router.get('/backUsuarios', async function(req, res, next) {
-  var usus = await databaseUsuarios.verusus()
+  var usus = await databaseUsuarios.verusus();
   res.render('backUsuarios',  { usus: usus } );
   });
 
@@ -83,9 +83,21 @@ router.get('/backPromos', function(req, res, next) {
 router.get('/backHorarios', function(req, res, next) {
   res.render('backHorarios', { title: 'AluCine' });
 });
-
-router.get('/backSalas', function(req, res, next) {
-  res.render('backSalas', { title: 'AluCine' });
+//backSalas
+router.get('/backSalas',async function(req, res, next) {
+  var salas = await databaseSalas.verSalas();
+  res.render('backSalas', {salas:salas});
+});
+router.get('/registroSala', function(req, res, next) {
+  res.render('formSala', { title: 'AluCine' });
+});
+router.post('/addSala',async function(req, res, next) {
+  var salas = await databaseSalas.addSala(req);
+  res.render('backSalas', {salas:salas});
+});
+router.post('/busquedaSala',async function(req, res, next) {
+  var salas = await databaseSalas.addSala(req);
+  res.render('backSalas', {salas:salas});
 });
 
 

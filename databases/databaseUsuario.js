@@ -41,12 +41,7 @@ exports.verusus = async function(){
  exports.busquedaUsus = async function(req){
    var busq = req.body.busqueda;
     var usu = await Usuario.find({
-       $or:[
-         {email:{$regex:busq,$options:"$i"}},
-         {dni:{$regex:busq,$options:"$i"}},
-         {nombre:{$regex:busq,$options:"$i"}},
-         {apellidos:{$regex:busq,$options:"$i"}}]
+
       });
-    console.log("EMAIL: "+usu);
     return usu;
  }
