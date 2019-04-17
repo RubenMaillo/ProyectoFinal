@@ -1,16 +1,10 @@
-const mongoose = require('mongoose');
-const Sala = require('../models/salas')
+const Sala = require('../models/salas');
 
-exports.initializeMongo = function(){
-            mongoose.connect('mongodb://mongo/salas',{useNewUrlParser:true})
-            .then(() => console.log('WEEE!'))
-            .catch(err => console.error('Eppa', err));
-}
 
 exports.addSala=async function(req){
     var sala = new Sala({
         numSala:req.body.numSala,
-        capadidad:req.body.capacidad,
+        capacidad:req.body.capacidad
     });
     await sala.save();
 }
@@ -19,7 +13,12 @@ exports.verSalas= async function(req){
     return salas;
 }
 exports.busquedaSalas = async function(req){
+    var busq = req.body.busqueda;
     var salas = await Sala.find({
-
-    })
+        $or:[
+            {numSala:{$regex:busq,$options:"$i"}},
+            {capacidad:{$regex:busq,$option:"$i"}}
+        ]
+    });
+    return salas;
 }

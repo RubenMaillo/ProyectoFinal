@@ -1,16 +1,10 @@
-const mongoose = require('mongoose');
-const Usuario = require('../models/usuarios')
-
-exports.initializeMongo = function(){
-            mongoose.connect('mongodb://mongo/usuarios',{useNewUrlParser:true})
-            .then(() => console.log('WEEE!'))
-            .catch(err => console.error('Eppa', err));
-}
+const Usuario = require('../models/usuarios');
 
 exports.verusus = async function(){
-    var usus = await Usuario.find();
+    var usus = await Usuario.find().limit(2);
     return usus;
  }
+
  exports.addUsu = async function(req){
     var usu = new Usuario({
        dni:req.body.dni,
@@ -41,7 +35,11 @@ exports.verusus = async function(){
  exports.busquedaUsus = async function(req){
    var busq = req.body.busqueda;
     var usu = await Usuario.find({
-
+       $or:[
+         {email:{$regex:busq,$options:"$i"}},
+         {dni:{$regex:busq,$options:"$i"}},
+         {nombre:{$regex:busq,$options:"$i"}},
+         {apellidos:{$regex:busq,$options:"$i"}}]
       });
     return usu;
  }

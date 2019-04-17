@@ -47,6 +47,7 @@ router.get('/detallesPelicula', function(req, res, next) {
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
 });
+
 //backUsuario
 router.post('/addUsuario', async function(req, res, next) {
   
@@ -83,20 +84,22 @@ router.get('/backPromos', function(req, res, next) {
 router.get('/backHorarios', function(req, res, next) {
   res.render('backHorarios', { title: 'AluCine' });
 });
+
+
 //backSalas
-router.get('/backSalas',async function(req, res, next) {
+router.get('/backSalas',async function(req, res) {
   var salas = await databaseSalas.verSalas();
   res.render('backSalas', {salas:salas});
 });
-router.get('/registroSala', function(req, res, next) {
+router.get('/registroSala', function(req, res) {
   res.render('formSala', { title: 'AluCine' });
 });
-router.post('/addSala',async function(req, res, next) {
+router.post('/addSala',async function(req, res) {
   var salas = await databaseSalas.addSala(req);
   res.render('backSalas', {salas:salas});
 });
-router.post('/busquedaSala',async function(req, res, next) {
-  var salas = await databaseSalas.addSala(req);
+router.post('/busquedaSalas',async function(req, res) {
+  var salas = await databaseSalas.busquedaSalas(req);
   res.render('backSalas', {salas:salas});
 });
 
