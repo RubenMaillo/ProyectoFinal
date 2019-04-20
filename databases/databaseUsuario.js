@@ -1,8 +1,19 @@
 const Usuario = require('../models/usuarios');
 
-exports.verusus = async function(){
-    var usus = await Usuario.find().limit(2);
-    return usus;
+exports.verusus = async function(req){
+   var limitPag = 2;
+   var pag = req.params.pagina;
+   var cuenta = await Usuario.find().countDocuments();
+   var usus = await Usuario.find()
+   .skip((limitPag * pag) - limitPag)
+   .limit(limitPag)
+   var v1 = usus;
+   var v2 = pag;
+   var v3 = Math.ceil(cuenta/limitPag);
+   var v4 = Number(pag)+1;
+   var v5 = Number(pag)-1;
+   var datos = [v1,v2,v3,v4,v5];
+   return datos;
  }
 
  exports.addUsu = async function(req){
@@ -29,17 +40,31 @@ exports.verusus = async function(){
     return usu[0];
     
  }
- exports.test = async function(req){
-   await console.log(req)
- }
  exports.busquedaUsus = async function(req){
-   var busq = req.body.busqueda;
-    var usu = await Usuario.find({
-       $or:[
-         {email:{$regex:busq,$options:"$i"}},
-         {dni:{$regex:busq,$options:"$i"}},
-         {nombre:{$regex:busq,$options:"$i"}},
-         {apellidos:{$regex:busq,$options:"$i"}}]
-      });
-    return usu;
+   var busq = req.query.busqueda;
+   var limitPag = 2;
+   var pag = req.params.pagina;
+   var cuenta = await Usuario.find({
+      $or:[
+      {email:{$regex:busq,$options:"$i"}},
+      {dni:{$regex:busq,$options:"$i"}},
+      {nombre:{$regex:busq,$options:"$i"}},
+      {apellidos:{$regex:busq,$options:"$i"}}]
+   }).countDocuments();
+   var usus = await Usuario.find({
+      $or:[
+      {email:{$regex:busq,$options:"$i"}},
+      {dni:{$regex:busq,$options:"$i"}},
+      {nombre:{$regex:busq,$options:"$i"}},
+      {apellidos:{$regex:busq,$options:"$i"}}]
+   })
+   .skip((limitPag * pag) - limitPag)
+   .limit(limitPag)
+   var v1 = usus;
+   var v2 = pag;
+   var v3 = Math.ceil(cuenta/limitPag);
+   var v4 = Number(pag)+1;
+   var v5 = Number(pag)-1;
+   var datos = [v1,v2,v3,v4,v5];
+   return datos;
  }

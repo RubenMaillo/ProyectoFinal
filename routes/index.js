@@ -61,15 +61,26 @@ router.post('/addUsuario', async function(req, res, next) {
     res.redirect('/');
   });
   
-router.get('/backUsuarios', async function(req, res, next) {
-  var usus = await databaseUsuarios.verusus();
-  res.render('backUsuarios',  { usus: usus } );
+router.get('/backUsuarios/:pagina', async function(req, res, next) {
+  var usu = await databaseUsuarios.verusus(req);
+  res.render('backUsuarios',  { 
+    usus: usu[0],
+    pag: usu[1],
+    paginas: usu[2],
+    pagSig: usu[3],
+    pagAnte: usu[4],
+    busque: null
+  } );
   });
-
-
-router.post('/busquedaUsuarios', async function(req,res){
-  var usus = await databaseUsuarios.busquedaUsus(req);
-res.render('backUsuarios',  { usus:usus } );
+router.get('/busquedaUsuarios/:pagina', async function(req,res){
+  var usu = await databaseUsuarios.busquedaUsus(req);
+res.render('backUsuarios',{ 
+  usus: usu[0],
+  pag: usu[1],
+  paginas: usu[2],
+  pagSig: usu[3],
+  pagAnte: usu[4],
+  busque: req.query.busqueda } );
 });
 
 
