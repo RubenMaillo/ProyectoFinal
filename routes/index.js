@@ -40,12 +40,20 @@ router.get('/cartelera', function(req, res, next) {
   res.render('cartelera', { title: 'AluCine' });
 });
 
+router.get('/estrenos', function(req, res, next) {
+  res.render('estrenos', { title: 'AluCine' });
+});
+
 router.get('/detallesPelicula', function(req, res, next) {
   res.render('detallesPelicula', { title: 'AluCine' });
 });
 
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
+});
+
+router.get('/entradas', function(req, res, next) {
+  res.render('entradas', { title: 'AluCine' });
 });
 
 router.post('/addUsuario', async function(req, res, next) {
@@ -85,5 +93,20 @@ router.get('/backSalas', function(req, res, next) {
   res.render('backSalas', { title: 'AluCine' });
 });
 
+router.get('/addmodPelicula', function(req, res, next) {
+  res.render('addmodPelicula', { title: 'AluCine' });
+});
+
+router.get('/addmodPromo', function(req, res, next) {
+  res.render('addmodPromo', { title: 'AluCine' });
+});
+
+router.get('/addmodHorario', function(req, res, next) {
+  res.render('addmodHorario', { title: 'AluCine' });
+});
+
+router.get('/addmodSala', function(req, res, next) {
+  res.render('addmodSala', { title: 'AluCine' });
+});
 
 module.exports = router;
