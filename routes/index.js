@@ -32,12 +32,9 @@ router.get('/inicioSesion', function(req, res, next) {
 
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-<<<<<<< HEAD
   //console.log(usu.email+' pipo');
   req.session.user = usu.email;
   //res.render('index',{username:usu.email})
-=======
->>>>>>> master
   res.send(usu.nombre+'<br>'+usu.apellidos);
 });
 
