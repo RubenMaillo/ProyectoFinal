@@ -56,24 +56,14 @@
                     <th>Apellidos</th>
                     <th>email</th>
                 </tr>
-                <tr>
-                    <td><%= usus[0]['dni'] %></td>
-                    <td><%= usus[0]['nombre'] %></td>
-                    <td><%= usus[0]['apellidos'] %></td>
-                    <td><%= usus[0]['email'] %></td>
-                </tr>
-                <tr>
-                    <td>44953619E</td>
-                    <td>Juan</td>
-                    <td>Palomo González</td>
-                    <td>juanpalomo@outlook.com</td>
-                </tr>
-                <tr>
-                    <td>47153613H</td>
-                    <td>María</td>
-                    <td>Miguel Rodríguez</td>
-                    <td>mmRodri@gmail.com</td>
-                </tr>
+                <% for(var i=0; i< usus.length; i++){%>
+                    <tr>
+                        <td><%= usus[i].dni %></td>
+                        <td><%= usus[i].nombre %></td>
+                        <td><%= usus[i].apellidos %></td>
+                        <td><%= usus[i].email %></td>
+                    </tr>
+                    <% }; %>
             </table>
         </div>
     </section>

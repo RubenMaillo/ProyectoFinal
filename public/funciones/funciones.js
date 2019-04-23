@@ -15,11 +15,10 @@ window.onscroll = function(){
     posIni = posAct;
 }
 
-function desplegarMenu(){
-    document.getElementById("menuMin").style.right = "0em";
-}
 
-function esconderMenu(){
-    document.getElementById("menuMin").style.right = "-20em";
+function desplegarMenu(){
+    document.getElementById("opcionesMenu").classList.toggle("desplegado");
+    document.getElementById("iconHamburger").classList.toggle("hamburger");
+    document.getElementById("iconHamburger").classList.toggle("activado");
 }
 

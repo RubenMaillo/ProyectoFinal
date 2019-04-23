@@ -29,13 +29,18 @@ router.get('/menu', function(req, res, next) {
 router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
+
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
+<<<<<<< HEAD
   //console.log(usu.email+' pipo');
   req.session.user = usu.email;
   //res.render('index',{username:usu.email})
+=======
+>>>>>>> master
   res.send(usu.nombre+'<br>'+usu.apellidos);
 });
+
 router.get('/registro', function(req, res, next) {
   res.render('registro', { title: 'AluCine' });
 
@@ -45,12 +50,20 @@ router.get('/cartelera', function(req, res, next) {
   res.render('cartelera', { title: 'AluCine' });
 });
 
+router.get('/estrenos', function(req, res, next) {
+  res.render('estrenos', { title: 'AluCine' });
+});
+
 router.get('/detallesPelicula', function(req, res, next) {
   res.render('detallesPelicula', { title: 'AluCine' });
 });
 
 router.get('/promos', function(req, res, next) {
   res.render('promos', { title: 'AluCine' });
+});
+
+router.get('/entradas', function(req, res, next) {
+  res.render('entradas', { title: 'AluCine' });
 });
 
 router.post('/addUsuario', async function(req, res, next) {
@@ -67,7 +80,9 @@ router.post('/addUsuario', async function(req, res, next) {
   
 router.get('/backUsuarios', async function(req, res, next) {
   var usus = await databaseUsuarios.verusus()
-   console.log(usus);
+  usus.forEach(function(usu){
+    console.log(usu['dni']);
+  });
     res.render('backUsuarios',  { usus: usus } );
     
   });
@@ -88,5 +103,20 @@ router.get('/backSalas', function(req, res, next) {
   res.render('backSalas', { title: 'AluCine' });
 });
 
+router.get('/addmodPelicula', function(req, res, next) {
+  res.render('addmodPelicula', { title: 'AluCine' });
+});
+
+router.get('/addmodPromo', function(req, res, next) {
+  res.render('addmodPromo', { title: 'AluCine' });
+});
+
+router.get('/addmodHorario', function(req, res, next) {
+  res.render('addmodHorario', { title: 'AluCine' });
+});
+
+router.get('/addmodSala', function(req, res, next) {
+  res.render('addmodSala', { title: 'AluCine' });
+});
 
 module.exports = router;
