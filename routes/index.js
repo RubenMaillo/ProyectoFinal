@@ -39,7 +39,7 @@ router.post('/iniSession', async function(req, res) {
 });
 
 router.get('/registro', function(req, res, next) {
-  res.render('registro', { title: 'AluCine' });
+  res.render('registro', { title: 'AluCine',contrasena:'' });
 
 });
 
@@ -68,7 +68,8 @@ router.post('/addUsuario', async function(req, res, next) {
   contra1 = req.body.pass;
   contra2 = req.body.pass2;
   if(contra1 != contra2){
-    res.send("La contraseña tiene que ser igual");
+    
+    res.render('registro', { title: 'AluCine',contrasena: 'La contraseña tiene que ser igual' });
   }else{
     await databaseUsuarios.addUsu(req);
   }
