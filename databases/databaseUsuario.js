@@ -1,12 +1,12 @@
 const Usuario = require('../models/usuarios');
 
 exports.verusus = async function(req){
-   var limitPag = 2;
+   var limitPag = 5;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find().countDocuments();
    var usus = await Usuario.find()
    .skip((limitPag * pag) - limitPag)
-   .limit(limitPag)
+   .limit(limitPag);
    var v1 = usus;
    var v2 = pag;
    var v3 = Math.ceil(cuenta/limitPag);
@@ -42,7 +42,7 @@ exports.verusus = async function(req){
  }
  exports.busquedaUsus = async function(req){
    var busq = req.query.busqueda;
-   var limitPag = 2;
+   var limitPag = 5;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find({
       $or:[
