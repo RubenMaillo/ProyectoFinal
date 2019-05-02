@@ -37,6 +37,8 @@ exports.verusus = async function(req){
         password: req.body.pass
         });
     //console.log(usu[0]);
+    //req.session.user = usu[0].email;
+    //console.log(req.session.user)
     return usu[0];
     
  }

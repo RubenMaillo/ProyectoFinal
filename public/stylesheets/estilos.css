@@ -869,7 +869,7 @@ button:hover{
 }
 
 #cartelera div{
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -885,3 +885,26 @@ button:hover{
 }
 
 /*   CARTELERA   */
+
+.entradas{
+    margin-bottom: 15em;
+    margin-top: 1em;
+}
+
+table{
+    border: 2px solid #ECECEC;
+}
+
+.butaca{
+    width: 4em !important;
+    height: 4em;
+}
+
+
+
+.sinop{
+    background: rgba(255, 255, 255, 0.45);
+    height: 200px;
+    width: 50em !important;
+    padding: 20px;
+}

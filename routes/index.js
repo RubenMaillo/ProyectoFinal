@@ -8,6 +8,9 @@ var databaseSalas = require('./../databases/databaseSala');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  //if(req.session.user!=undefined){
+    console.log(req.session.user+' hey hey')
+  //}
   res.render('index', { title: 'Express' });
 });
 
@@ -29,15 +32,23 @@ router.get('/inicioSesion', function(req, res, next) {
 
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
+  //console.log(usu.email+' pipo');
+  req.session.user = usu.email;
+  //res.render('index',{username:usu.email})
   res.send(usu.nombre+'<br>'+usu.apellidos);
 });
 
 router.get('/registro', function(req, res, next) {
-  res.render('registro', { title: 'AluCine' });
+  res.render('registro', { title: 'AluCine',contrasena:'' });
+
 });
 
 router.get('/cartelera', function(req, res, next) {
   res.render('cartelera', { title: 'AluCine' });
+});
+
+router.get('/estrenos', function(req, res, next) {
+  res.render('estrenos', { title: 'AluCine' });
 });
 
 router.get('/detallesPelicula', function(req, res, next) {
@@ -51,12 +62,18 @@ router.get('/registroPeli', function(req,res){
   res.render('registroPeli',{title:'AluCine'});
 });
 //backUsuario
+
+router.get('/entradas', function(req, res, next) {
+  res.render('entradas', { title: 'AluCine' });
+});
+
 router.post('/addUsuario', async function(req, res, next) {
   
   contra1 = req.body.pass;
   contra2 = req.body.pass2;
   if(contra1 != contra2){
-    res.send("La contraseña tiene que ser igual");
+    
+    res.render('registro', { title: 'AluCine',contrasena: 'La contraseña tiene que ser igual' });
   }else{
     await databaseUsuarios.addUsu(req);
   }
@@ -146,6 +163,21 @@ router.post('/addPromo', async function(req, res, next) {
   });
   
 
+router.get('/addmodPelicula', function(req, res, next) {
+  res.render('addmodPelicula', { title: 'AluCine' });
+});
+
+router.get('/addmodPromo', function(req, res, next) {
+  res.render('addmodPromo', { title: 'AluCine' });
+});
+
+router.get('/addmodHorario', function(req, res, next) {
+  res.render('addmodHorario', { title: 'AluCine' });
+});
+
+router.get('/addmodSala', function(req, res, next) {
+  res.render('addmodSala', { title: 'AluCine' });
+});
 
 module.exports = router;
 
