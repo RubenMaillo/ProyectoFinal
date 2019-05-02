@@ -16,10 +16,10 @@ exports.verPelis= async function(req){
     var limitPag = 1;
     var pag = req.params.pagina;
     var cuenta = await Peli.find().countDocuments();
-    var salas = await Peli.find()
+    var pelis = await Peli.find()
     .skip((limitPag * pag) - limitPag)
     .limit(limitPag);
-    var v1 = salas;
+    var v1 = pelis;
     var v2 = pag;
     var v3 = Math.ceil(cuenta/limitPag);
     var v4 = Number(pag)+1;
@@ -33,17 +33,21 @@ exports.busquedaPelis = async function(req){
     var pag = req.params.pagina;
     var cuenta = await Peli.find({
         $or:[
-            {numSala:{$regex:busq,$options:"$i"}}
+            {nombre:{$regex:busq,$options:"$i"}},
+            {anio:{$regex:busq,$options:"$i"}},
+            {genero:{$regex:busq,$options:"$i"}}
         ]
     }).countDocuments();
-    var salas = await Peli.find({
+    var pelis = await Peli.find({
         $or:[
-            {numSala:{$regex:busq,$options:"$i"}}
+            {nombre:{$regex:busq,$options:"$i"}},
+            {anio:{$regex:busq,$options:"$i"}},
+            {genero:{$regex:busq,$options:"$i"}}
         ]
     })
     .skip((limitPag*pag)- limitPag)
     .limit(limitPag);
-    var v1 = salas;
+    var v1 = pelis;
     var v2 = pag;
     var v3 = Math.ceil(cuenta/limitPag);
     var v4 = Number(pag)+1;

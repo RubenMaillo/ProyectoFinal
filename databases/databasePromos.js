@@ -10,7 +10,7 @@ exports.addPromo=async function(req){
     await promo.save();
 }
 exports.verPromos= async function(req){
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Promo.find().countDocuments();
     var promos = await Promo.find()
@@ -26,7 +26,7 @@ exports.verPromos= async function(req){
 }
 exports.busquedaPromos = async function(req){
     var busq = req.query.busqueda;
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Promo.find({
         $or:[

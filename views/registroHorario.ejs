@@ -20,17 +20,14 @@
         <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
 </head>
 <body id="registro">
-    <h2 class="title">Peli AluCine</h2>
+    <h2 class="title">Horario AluCine</h2>
 
-    <form action="/addPeli" method="POST">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="anio" placeholder="año">
-        <input type="text" name="genero" placeholder="genero">
-        <input type="text" name="descripcion" placeholder="descripcion">
-        <input type="text" name="trailer" placeholder="trailer">
-        <input type="text" name="poster" placeholder="poster">
-        
-        <input class="btn" type="submit" name="btnLogin" value="Crear peli">
+    <form action="/addHorario" method="POST">
+        <input type="text" name="idPeli" placeholder="idPeli">
+        <input type="text" name="idPromo" placeholder="idPromo">
+        <input type="date" name="fecha">
+        <input type="time" name="hora">
+        <input class="btn" type="submit" name="btnLogin" value="Añadir Horario">
     </form>
 </body>
 </html>
