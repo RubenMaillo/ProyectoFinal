@@ -60,9 +60,9 @@ router.post('/addUsuario', async function(req, res, next) {
   }else{
     await databaseUsuarios.addUsu(req);
   }
-    res.redirect('/');
+    res.redirect('/backUsuarios/1');
   });
-  
+
 router.get('/backUsuarios/:pagina', async function(req, res, next) {
   var usu = await databaseUsuarios.verusus(req);
   res.render('backUsuarios',  { 
@@ -125,13 +125,26 @@ router.get('/busquedaSalas/:pagina',async function(req, res) {
 
 
 router.get('/registroSala', function(req, res) {
-  res.render('formSala', { title: 'AluCine' });
+  res.render('registroSala', { title: 'AluCine' });
 });
 router.post('/addSala',async function(req, res) {
   var salas = await databaseSalas.addSala(req);
-  res.render('backSalas', {salas:salas});
-});
+  res.redirect('/backSalas/1');
 
+});
+//backUsuario
+router.post('/addPromo', async function(req, res, next) {
+  
+  contra1 = req.body.pass;
+  contra2 = req.body.pass2;
+  if(contra1 != contra2){
+    res.send("La contraseña tiene que ser igual");
+  }else{
+    await databaseUsuarios.addUsu(req);
+  }
+    res.redirect('/');
+  });
+  
 
 
 module.exports = router;
