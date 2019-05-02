@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var databaseUsuarios = require('./../databases/databaseUsuario');
 var databaseSalas = require('./../databases/databaseSala');
+var databasePelis = require('./../databases/databasePelis');
 //importar models
 
 
@@ -163,9 +164,15 @@ router.post('/addPromo', async function(req, res, next) {
   });
   
 
-router.get('/addmodPelicula', function(req, res, next) {
-  res.render('addmodPelicula', { title: 'AluCine' });
+router.get('/registroPelicula', function(req, res, next) {
+  res.render('registroPeli', { title: 'AluCine' });
 });
+
+router.post('/addPeli', async function(req, res, next) {
+  await databasePelis.addPeli(req);
+  res.redirect('/backPeliculas');
+});
+
 
 router.get('/addmodPromo', function(req, res, next) {
   res.render('addmodPromo', { title: 'AluCine' });
