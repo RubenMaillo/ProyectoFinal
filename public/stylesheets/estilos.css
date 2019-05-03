@@ -908,3 +908,22 @@ table{
     width: 50em !important;
     padding: 20px;
 }
+
+
+#registro{
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+#registro .contenido{
+    flex-direction: column;
+}
+
+#contReg form{
+    margin: 0;
+}
+
+#contReg form input{
+    background: rgb(245, 245, 245);
+}
