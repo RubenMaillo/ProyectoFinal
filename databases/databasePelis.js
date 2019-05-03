@@ -13,7 +13,7 @@ exports.addPeli=async function(req){
     await peli.save();
 }
 exports.verPelis= async function(req){
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Peli.find().countDocuments();
     var pelis = await Peli.find()
@@ -29,7 +29,7 @@ exports.verPelis= async function(req){
 }
 exports.busquedaPelis = async function(req){
     var busq = req.query.busqueda;
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Peli.find({
         $or:[

@@ -25,12 +25,42 @@
     <form action="/addPeli" method="POST">
         <input type="text" name="nombre" placeholder="nombre">
         <input type="text" name="anio" placeholder="año">
-        <input type="text" name="genero" placeholder="genero">
+        <div id="generos">
+        <input type="text" name="cuenta" hidden value="0">
+        <select name="genero">
+            <option value="" selected>Elija una</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Tragedia">Tragedia</option>
+            <option value="Drama">Drama</option>
+            <option value="Ciencia Ficción">Ciencia Ficción</option>
+            <option value="Animación">Animación</option>
+            <option value="Infantil">Infantil</option>
+            <option value="Adultos">Adultos</option>
+            <option value="Otros">Otros</option>
+        </select>
+        </div>
         <input type="text" name="descripcion" placeholder="descripcion">
         <input type="text" name="trailer" placeholder="trailer">
         <input type="text" name="poster" placeholder="poster">
         
         <input class="btn" type="submit" name="btnLogin" value="Crear peli">
+        
     </form>
+    <button id="menosSel">-</button>
+    <button id="masSel">+</button>
 </body>
 </html>
+<script>
+    var i = 1;
+    $('#masSel').click(function(){
+        $("#generos").append("<select id='genero["+i+"]' name='genero'><option value='' selected>Elija una</option><option value='Comedia'>Comedia</option><option value='Tragedia'>Tragedia</option><option value='Drama'>Drama</option><option value='Ciencia Ficción'>Ciencia Ficción</option><option value='Animación'>Animación</option><option value='Infantil'>Infantil</option><option value='Adultos'>Adultos</option><option value='Otros'>Otros</option></select>")
+        i++;
+    });
+    $('#menosSel').click(function(){
+        if(i>0){
+            i--;
+            $("#genero["+i+"]").remove();
+        }
+    });
+
+</script>
