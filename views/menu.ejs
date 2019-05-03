@@ -13,9 +13,13 @@
             <li><a href="#">Buscar</a></li>
         </ul>
 
-        <ul id="usuario">
-            <li><a href="inicioSesion" class="fancybox" data-fancybox data-type="iframe">Sign in</a></li>
+        <ul id="usuario"><% if(nombre==undefined){ %>
+            <li><a href="ap" class="fancybox" >Sign in</a></li>
             <li><a class="btnRegistro" href="registro" class="fancybox" data-fancybox data-type="iframe">Sign up</a></li>
+            <% }else{%>
+                <h3>Bienvenido <%= nombre %></h3>
+            <% } %>
+            
         </ul>
     </nav>
     <div class="flex bars" onclick="desplegarMenu()">

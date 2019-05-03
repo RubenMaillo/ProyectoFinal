@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   //if(req.session.user!=undefined){
     console.log(req.session.user+' hey hey')
   //}
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express',nombre:undefined,apellidos:undefined });
 });
 
 router.get('/ap', function(req, res, next) {
@@ -36,9 +36,19 @@ router.get('/inicioSesion', function(req, res, next) {
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
   //console.log(usu.email+' pipo');
-  req.session.user = usu.email;
+  
   //res.render('index',{username:usu.email})
-  res.send(usu.nombre+'<br>'+usu.apellidos);
+  //res.send(usu.nombre+'<br>'+usu.apellidos);
+  if(usu.tipo == 'admin'){
+    res.render('apIndex',{ title: 'AluCine' });
+  }
+  else if(usu.tipo == 'undefined'){
+    res.render('ap', { title: 'AluCine', error: 'El usuario o contraseña no son validos' });
+  }else{
+    res.render('index',{nombre:usu.nombre,apellidos:usu.apellidos});
+  }
+  req.session.user = usu.email;
+  req.session.tipo = usu.tipo;
 });
 
 router.get('/registro', function(req, res, next) {
