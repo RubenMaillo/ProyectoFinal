@@ -10,11 +10,14 @@ var databaseHorarios = require('./../databases/databaseHorarios');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   //if(req.session.user!=undefined){
     console.log(req.session.user+' hey hey')
   //}
-  res.render('index', { title: 'Express' });
+
+  pelis = await databasePelis.verPelisF(); 
+
+  res.render('index', { title: 'Express', pelis:pelis});
 });
 
 router.get('/ap', function(req, res, next) {
@@ -46,8 +49,9 @@ router.get('/registro', function(req, res, next) {
 
 });
 
-router.get('/cartelera', function(req, res, next) {
-  res.render('cartelera', { title: 'AluCine' });
+router.get('/cartelera', async function(req, res, next) {
+  pelis = await databasePelis.verPelisF();
+  res.render('cartelera', { title: 'AluCine', pelis:pelis });
 });
 
 router.get('/estrenos', function(req, res, next) {
@@ -238,8 +242,10 @@ router.get('/busquedaPeliculas/:pagina',async function(req, res) {
     busque: req.query.busqueda
   } );
 });
-router.get('/detallesPelicula', function(req, res, next) {
-  res.render('detallesPelicula', { title: 'AluCine' });
+router.get('/detallesPelicula/:id', async function(req, res, next) {
+  var pelicula = await databasePelis.datosPeli(req);
+  console.log(pelicula)
+  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula});
 });
 
 router.get('/registroPeli', function(req,res){
