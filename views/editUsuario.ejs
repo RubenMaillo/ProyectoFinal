@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/stylesheets/estilos.css">
+    
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="/funciones/jquery.fancybox.js"></script>
+        <script src="/funciones/funciones.js"></script>
+    
+        <title>AluCine</title>
+        <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
+</head>
+<body id="registro">
+    <h2 class="title">Usuario AluCine | Modifica un Usuario</h2>
+
+    <form action="/editUsuario" method="POST">
+        <input type="text" name="user" value='<%=usu.email %>' placeholder="Usuario (e-mail)*">
+        
+        <input type="password" name="pass" value='<%=usu.password %>' placeholder="Contraseña">
+        <input type="password" name="pass2" value='<%=usu.password %>' placeholder="Repite la Contraseña">
+
+        <input type="text" name="nombre" value='<%=usu.nombre %>' placeholder="Nombre*">
+        <input type="text" name="apellidos" value='<%=usu.apellidos %>' placeholder="Apellidos*">
+        <input type="text" name="telefono" value='<%=usu.telefono %>' placeholder="Nº de teléfono">
+        <input type="text" name="dni" value='<%=usu.dni %>' placeholder="Nº de DNI">
+
+        <input class="btn" type="submit" name="btnLogin" value="Crear cuenta">
+    </form>
+</body>
+</html>

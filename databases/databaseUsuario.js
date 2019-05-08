@@ -1,7 +1,7 @@
 const Usuario = require('../models/usuarios');
 
 exports.verusus = async function(req){
-   var limitPag = 2;
+   var limitPag = 5;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find().countDocuments();
    var usus = await Usuario.find()
@@ -42,9 +42,15 @@ exports.verusus = async function(req){
     return usu[0];
     
  }
+ exports.busquedaUsu = async function(req){
+    var usu = await Usuario.findOne({
+       _id:req.params.id
+    });
+    return usu;
+ }
  exports.busquedaUsus = async function(req){
    var busq = req.query.busqueda;
-   var limitPag = 2;
+   var limitPag = 5;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find({
       $or:[
@@ -70,3 +76,13 @@ exports.verusus = async function(req){
    var datos = [v1,v2,v3,v4,v5];
    return datos;
  }
+ exports.borrarUsu = async function(req){
+   var id = req.params.id;
+   console.log(id);
+   var resp = await Usuario.deleteOne({_id:id});
+   console.log(resp);
+   return resp;
+ }
+exports.editUsu = async function(req){
+   
+}
