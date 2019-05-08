@@ -11,13 +11,10 @@ var databaseHorarios = require('./../databases/databaseHorarios');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  //if(req.session.user!=undefined){
-    console.log(req.session.user+' hey hey')
-  //}
 
   pelis = await databasePelis.verPelisF(); 
 
-  res.render('index', { title: 'Express', pelis:pelis,nombre:undefined,apellidos:undefined });
+  res.render('index', { title: 'Express', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
 });
 
 router.get('/ap', function(req, res, next) {
@@ -29,26 +26,34 @@ router.get('/apIndex', function(req, res, next) {
 });
 
 router.get('/menu', function(req, res, next) {
-  res.render('menu', { title: 'AluCine' });
+  console.log('hola amigo '+req.session.nombre)
+  res.render('menu', { title: 'AluCine',nombre:req.session.nombre});
 });
 
 router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
 
+router.get('/logout',(req,res) => {
+  req.session.destroy((err) => {
+      if(err) {
+          return console.log(err);
+      }
+      res.redirect('/');
+  });
+
+});
+
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-  //console.log(usu.email+' pipo');
-  
-  //res.render('index',{username:usu.email})
-  //res.send(usu.nombre+'<br>'+usu.apellidos);
   if(usu.tipo == 'admin'){
     res.render('apIndex',{ title: 'AluCine' });
   }
   else if(usu.tipo == 'undefined'){
     res.render('ap', { title: 'AluCine', error: 'El usuario o contraseña no son validos' });
   }else{
-    req.session.user = usu.email;
+    //req.session.user = usu.email;
+    console.log('hello '+req.session.user);
     req.session.tipo = usu.tipo;
     res.render('index',{nombre:usu.nombre,apellidos:usu.apellidos});
   }
@@ -62,8 +67,7 @@ router.get('/registro', function(req, res, next) {
 
 router.get('/cartelera', async function(req, res, next) {
   pelis = await databasePelis.verPelisF();
-  console.log(req.session.user+'heyyyyyyy')
-  res.render('cartelera', { title: 'AluCine', pelis:pelis,nombre:undefined,apellidos:undefined });
+  res.render('cartelera', { title: 'AluCine', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
 });
 
 router.get('/estrenos', function(req, res, next) {
@@ -74,7 +78,7 @@ router.get('/estrenos', function(req, res, next) {
 //backUsuario
 
 router.get('/entradas', function(req, res, next) {
-  res.render('entradas', { title: 'AluCine' });
+  res.render('entradas', { title: 'AluCine',nombre:req.session.nombre,apellidos:undefined  });
 });
 
 router.post('/addUsuario', async function(req, res, next) {
@@ -257,8 +261,9 @@ router.get('/busquedaPeliculas/:pagina',async function(req, res) {
 });
 router.get('/detallesPelicula/:id', async function(req, res, next) {
   var pelicula = await databasePelis.datosPeli(req);
-  console.log(pelicula)
-  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:'',apellidos:''});
+  var horario = await databaseHorarios.verHorariosF(req,pelicula.id);
+  console.log(horario)
+  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:req.session.nombre,apellidos:'',horarios:horario});
 });
 
 router.get('/registroPeli', function(req,res){
