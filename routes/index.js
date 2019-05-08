@@ -225,6 +225,7 @@ router.get('/registroPelicula', function(req, res, next) {
 });
 
 router.post('/addPeli', async function(req, res, next) {
+  console.log(req.body.genero);
   await databasePelis.addPeli(req);
   res.redirect('/backPeliculas/1');
 });
