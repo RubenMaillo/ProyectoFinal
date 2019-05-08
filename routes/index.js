@@ -48,10 +48,11 @@ router.post('/iniSession', async function(req, res) {
   else if(usu.tipo == 'undefined'){
     res.render('ap', { title: 'AluCine', error: 'El usuario o contraseña no son validos' });
   }else{
+    req.session.user = usu.email;
+    req.session.tipo = usu.tipo;
     res.render('index',{nombre:usu.nombre,apellidos:usu.apellidos});
   }
-  req.session.user = usu.email;
-  req.session.tipo = usu.tipo;
+  
 });
 
 router.get('/registro', function(req, res, next) {
@@ -61,7 +62,8 @@ router.get('/registro', function(req, res, next) {
 
 router.get('/cartelera', async function(req, res, next) {
   pelis = await databasePelis.verPelisF();
-  res.render('cartelera', { title: 'AluCine', pelis:pelis });
+  console.log(req.session.user+'heyyyyyyy')
+  res.render('cartelera', { title: 'AluCine', pelis:pelis,nombre:undefined,apellidos:undefined });
 });
 
 router.get('/estrenos', function(req, res, next) {
@@ -256,7 +258,7 @@ router.get('/busquedaPeliculas/:pagina',async function(req, res) {
 router.get('/detallesPelicula/:id', async function(req, res, next) {
   var pelicula = await databasePelis.datosPeli(req);
   console.log(pelicula)
-  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula});
+  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:'',apellidos:''});
 });
 
 router.get('/registroPeli', function(req,res){
