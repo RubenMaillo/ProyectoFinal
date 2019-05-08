@@ -14,14 +14,10 @@ router.get('/', async function(req, res, next) {
   //if(req.session.user!=undefined){
     console.log(req.session.user+' hey hey')
   //}
-<<<<<<< HEAD
-  res.render('index', { title: 'Express',nombre:undefined,apellidos:undefined });
-=======
 
   pelis = await databasePelis.verPelisF(); 
 
-  res.render('index', { title: 'Express', pelis:pelis});
->>>>>>> b77cf4737df2d79db3a882cb1ecaaf8a1674698f
+  res.render('index', { title: 'Express', pelis:pelis,nombre:undefined,apellidos:undefined });
 });
 
 router.get('/ap', function(req, res, next) {
