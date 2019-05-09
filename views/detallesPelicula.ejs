@@ -41,7 +41,7 @@
                     <p><b>Sinopsis:</b> <%= pelicula.descripcion %></p>
                 </div>
                 <div>
-                    <h3>SESIONES</h3><p><% for(i=0; i < horarios.length;i++){%><p><a href='/entradas'><%= horarios[i].hora %></a> <%= horarios[i].fecha %></p><%} %></p>
+                    <h3>SESIONES</h3><p><% for(i=0; i < horarios.length;i++){%><p><a href='/entradas?pelicula=<%= pelicula._id%>&hora=<%= horarios[i]._id %>'><%= horarios[i].hora %></a> <%= horarios[i].fecha %></p><%} %></p>
                 </div>
             </div>
         </div>
