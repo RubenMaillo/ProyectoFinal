@@ -3,8 +3,7 @@ const Horario = require('../models/horarios');
 
 exports.addHorario = async function(req){
     var horario = new Horario({
-        idPeli:req.body.idPeli,
-        idPromo:req.body.idPromo,
+        pelicula:req.body.pelicula,
         fecha:req.body.fecha,
         hora:req.body.hora
     });
@@ -27,22 +26,17 @@ exports.verHorarios = async function(req){
 }
 exports.busquedaHorarios = async function(req){
     var busq = req.query.busqueda;
+    console.log(busq);
     var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Horario.find({
         $or:[
-            {idPeli:{$regex:busq,$options:"$i"}},
-            {idPromo:{$regex:busq,$options:"$i"}},
-            {fecha:{$regex:busq,$options:"$i"}},
-            {hora:{$regex:busq,$options:"$i"}}
+            {pelicula:{$regex:busq,$options:"$i"}}
         ]
     }).countDocuments();
     var horarios = await Horario.find({
         $or:[
-            {idPeli:{$regex:busq,$options:"$i"}},
-            {idPromo:{$regex:busq,$options:"$i"}},
-            {fecha:{$regex:busq,$options:"$i"}},
-            {hora:{$regex:busq,$options:"$i"}}
+            {pelicula:{$regex:busq,$options:"$i"}}
         ]
     })
     .skip((limitPag*pag)- limitPag)

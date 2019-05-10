@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var horarioSchema = new Schema({
-    idPeli: {type: String,required:[true,'idPeli']},
-    idPromo: { type: String, required: [true, 'idPromo'] },
+    pelicula: {type: String,required:[true,'La película es obligatoria']},
     fecha: { type: String, required: [true, 'La fecha es obligatoria'] },
     hora: { type: String, required: [true, 'La hora es obligatoria'] }
 });

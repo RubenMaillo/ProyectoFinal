@@ -930,3 +930,9 @@ table{
 #usuario h3{
     color: #ECECEC;
 }
+
+#horario select{
+    background: rgb(184, 184, 184) !important;
+    width: 80% !important;
+    margin: 10px; 
+}
