@@ -936,5 +936,9 @@ table{
     width: 80% !important;
     margin: 10px; 
 }
-
-
+/*.seleccionable{
+    background: url(/imagenes/butaca.png);
+    background-size:cover;
+    width: 75px;
+    height: 75px;
+}*/

@@ -32,10 +32,13 @@
                 <% for(var i = 0; i < 8; i++){ %>
                     <tr>
                         <% for(var j = 0; j < 15; j++){ 
-                            if(filas[i] != i+1 && butacas[i] !=j+1){ %>
-                            <td><a href="addEntradas/?fila=<%= i+1 %>&butaca=<%= (j+1) %>&pelicula=<%= sesion[0] %>&hora=<%= sesion[1] %>"><img src="imagenes/butaca.png" class="butaca" alt=""></a></td>
+                            
+                                if(test[i][j] == null){ %>
+                            <td class="seleccionable" id="<%= i%>c<%= j %>">
+                        <!--<a href="addEntradas/?fila=<%= i %>&butaca=<%= j %>&pelicula=<%= sesion[0] %>&hora=<%= sesion[1] %>">-->
+                                    <img src="imagenes/butaca.png" class="butaca" alt=""></a></td>
                         <% } else { %>
-                            <td><img src="imagenes/butacaBW.png" class="butaca" alt=""></td>
+                            <td class="noSelect"><img src="imagenes/butacaBW.png" class="butaca" alt=""></td>
                         
                     <% }} %>
                     </tr>
@@ -43,5 +46,37 @@
             </table>
         </div>
     </section>
+    <button id="bCompra">compra</button>
 </body>
 </html>
+<script>
+    $(".seleccionable").click(function(){
+        $(this).toggleClass('select');
+        if($(this).hasClass('select')){
+            $(this).find('.butaca').attr('src','imagenes/butacaSelect.png');
+            //console.log($(this).find('.butaca'));
+        }else{
+            $(this).find('.butaca').attr('src','imagenes/butaca.png');
+        }
+        
+});
+
+
+
+    $("#bCompra").click(function(){
+        $('td.select').each(function(){
+            var uwu = $(this).attr('id');
+            owo = uwu.split('c');
+            var url = "/addEntradas/?fila="+owo[0]+"&butaca="+owo[1]+"&pelicula=<%= sesion[0] %>&hora=<%= sesion[1] %>";
+        $.ajax({
+            url:url
+        
+        });
+
+        
+    });
+    alert('Su compra se ha realizado con éxito');
+    window.location.href = '/cartelera'
+
+});
+</script>

@@ -76,24 +76,76 @@ router.get('/estrenos', function(req, res, next) {
 
 //backUsuario
 
+async function f2(req) {
+  try {
+    var y = await databaseEntradas.verEntradas(req);
+    
+    y.sort(function compare(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const genreA = a.butaca;
+      const genreB = b.butaca;
+    
+      let comparison = 0;
+      if (genreA > genreB) {
+        comparison = 1;
+      } else if (genreA < genreB) {
+        comparison = -1;
+      }
+      return comparison;
+    });
+    y.sort(function compare(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const genreA = a.fila;
+      const genreB = b.fila;
+    
+      let comparison = 0;
+      if (genreA > genreB) {
+        comparison = 1;
+      } else if (genreA < genreB) {
+        comparison = -1;
+      }
+      return comparison;
+    });
+
+    return y;
+  } catch(e) { 
+    console.log(e);
+  }
+}
+
 router.get('/entradas', async function(req, res, next) {
   var sesion = await databaseEntradas.getSesion(req);
-  var ocupadas = await databaseEntradas.verEntradas(req);
+  var ocupadas = [];
+  ocupadas = await f2(req);
+
+
   var filas = [];
   var columnas = [];
+  var test =[];
+  var aux = 0 //num butaca ocupada
   
-  for(i = 0;i<ocupadas.length;i++){
-    filas[i] = ocupadas[i].fila;
-    columnas[i] = ocupadas[i].butaca;
+  for(i = 0;i<8;i++){
+    // test[ocupadas[i].fila]=[ocupadas[i].butaca];
+    test[i]=[];
+    for(j = 0;j<15;j++){
+      if(ocupadas[aux] != null &&ocupadas[aux].butaca==j && ocupadas[aux].fila==i){
+        aux++;
+        test[i][j]=j;
+      }
+      else{
+        test[i][j]=null;
+      }
+    }
+    //filas[i] = ocupadas[i].fila;
+    //columnas[i] = ocupadas[i].butaca;
   }
-  console.log(filas[0]+' '+columnas[0])
-  res.render('entradas', { title: 'AluCine',nombre:req.session.nombre,apellidos:undefined, sesion:sesion,filas:filas,butacas:columnas });
+  res.render('entradas', { title: 'AluCine',nombre:req.session.nombre,apellidos:undefined, sesion:sesion,test:test });
 });
 
 router.get('/addEntradas', async function(req, res, next) {
 var asiento = await databaseEntradas.verButaca(req);
 await databaseEntradas.addEntrada(req,asiento);
- res.send('has seleccionado la fila '+asiento[0]+' y la butaca '+asiento[1]+' para la pelicula '+asiento[2][1]+ ' a las '+asiento[3][1])
+ res.send('has seleccionado la fila '+(parseInt(asiento[0])+1)+' y la butaca '+(parseInt(asiento[1])+1)+' para la pelicula '+asiento[2][1]+ ' a las '+asiento[3][1])
 });
 
 router.post('/addUsuario', async function(req, res, next) {
