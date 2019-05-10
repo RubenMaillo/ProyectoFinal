@@ -68,3 +68,26 @@ exports.busquedaPelis = async function(req){
     var datos = [v1,v2,v3,v4,v5];
     return datos;
 }
+exports.borrarPeli = async function(req){
+    var id = req.params.id;
+    console.log(id);
+    var resp = await Usuario.deleteOne({_id:id});
+    console.log(resp);
+    return resp;
+  }
+ exports.editPeli = async function(req){
+    console.log(req.body._id);
+    var usu = await Usuario.updateOne(
+       {_id:req.body._id,},
+       {
+          dni:req.body.dni,
+          nombre:req.body.nombre,
+          apellidos:req.body.apellidos,
+          email:req.body.user,
+          password: req.body.pass,
+          telefono:req.body.telefono
+       },
+ 
+       
+    );
+ }

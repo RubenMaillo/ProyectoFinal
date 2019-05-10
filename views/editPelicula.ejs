@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/stylesheets/estilos.css">
+    
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="/funciones/jquery.fancybox.js"></script>
+        <script src="/funciones/funciones.js"></script>
+    
+        <title>AluCine</title>
+        <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
+</head>
+<body id="registro">
+    <h2 class="title">Peli AluCine</h2>
+
+    <form action="/addPeli" method="POST">
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="anio" placeholder="año">
+        <div id="generos">
+        
+        <select name="genero">
+            <option value="" selected>Elija una</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Tragedia">Tragedia</option>
+            <option value="Drama">Drama</option>
+            <option value="Ciencia Ficción">Ciencia Ficción</option>
+            <option value="Animación">Animación</option>
+            <option value="Infantil">Infantil</option>
+            <option value="Adultos">Adultos</option>
+            <option value="Otros">Otros</option>
+        </select>
+        </div>
+        <input type="text" name="descripcion" placeholder="descripcion">
+        <input type="text" name="trailer" placeholder="trailer">
+        <input type="text" name="poster" placeholder="poster">
+        
+        <input class="btn" type="submit" name="btnLogin" value="Crear peli">
+        
+    </form>
+    <button id="menosSel">-</button>
+    <button id="masSel">+</button>
+</body>
+</html>
+<script>
+    var i = 1;
+    $('#masSel').click(function(){
+        $("#generos").append("<select id='genero"+i+"' name='genero'><option value='' selected>Elija una</option><option value='Comedia'>Comedia</option><option value='Tragedia'>Tragedia</option><option value='Drama'>Drama</option><option value='Ciencia Ficción'>Ciencia Ficción</option><option value='Animación'>Animación</option><option value='Infantil'>Infantil</option><option value='Adultos'>Adultos</option><option value='Otros'>Otros</option></select>")
+        i++;
+    });
+    $('#menosSel').click(function(){
+        if(i>1){
+            i--;
+            $("#genero"+i).remove();
+        }
+    });
+
+</script>
