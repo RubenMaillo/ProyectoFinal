@@ -28,6 +28,12 @@
         </div>
         
         <div class="flex peliculas">
+
+            <% for(var i=0; i< pelis.length; i++){ %>
+                <a href="detallesPelicula/<%= pelis[i]._id %>"><div><img src="<%= pelis[i].poster %>" alt=""></div></a>
+            <%}%>
+
+            <!--a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
@@ -36,8 +42,7 @@
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
             <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
+            <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a-->
         </div>
     </section>
 </body>

@@ -7,15 +7,20 @@
     </div>
     <nav id="opcionesMenu" class="flex">
         <ul class="flex">
-            <li><a href="estrenos">Estrenos</a></li>
-            <li><a href="cartelera">Cartelera</a></li>
-            <li><a href="promos">Promos</a></li>
+            <li><a href="/estrenos">Estrenos</a></li>
+            <li><a href="/cartelera">Cartelera</a></li>
+            <li><a href="/promos">Promos</a></li>
             <li><a href="#">Buscar</a></li>
         </ul>
 
-        <ul id="usuario">
-            <li><a href="inicioSesion" class="fancybox" data-fancybox data-type="iframe">Sign in</a></li>
-            <li><a class="btnRegistro" href="registro" class="fancybox" data-fancybox data-type="iframe">Sign up</a></li>
+        <ul id="usuario"><% if(nombre==undefined){ %>
+            <li><a href="ap" class="fancybox" >Sign in</a></li>
+            <li><a class="btnRegistro" href="registro" class="fancybox">Sign up</a></li>
+            <% }else{%>
+                <h3>Bienvenido <%= nombre %></h3>
+                <li><a class="btnRegistro" href="logout" class="fancybox">Salir</a></li>
+            <% } %>
+            
         </ul>
     </nav>
     <div class="flex bars" onclick="desplegarMenu()">

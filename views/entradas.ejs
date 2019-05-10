@@ -24,16 +24,19 @@
     
     <section id="cartelera">
         <div class="cabecera2">
-            <h2>Estrenos</h2>
+            <h2>Sala</h2>
         </div>
 
         <div class="entradas">
             <table>
                 <% for(var i = 0; i < 8; i++){ %>
                     <tr>
-                        <% for(var j = 0; j < 15; j++){ %>
-                            <td><img src="imagenes/butaca.png" class="butaca" alt=""></td>
-                        <% } %>
+                        <% for(var j = 0; j < 15; j++){ if(filas[i] != i+1 && butacas[i] !=j+1){ %>
+                            <td><a href="addEntradas/?fila=<%= i+1 %>&butaca=<%= (j+1) %>&pelicula=<%= sesion[0] %>&hora=<%= sesion[1] %>"><img src="imagenes/butaca.png" class="butaca" alt=""></a></td>
+                        <% } else { %>
+                            <td><img src="imagenes/butacaBW.png" class="butaca" alt=""></td>
+                        
+                    <% }} %>
                     </tr>
                 <% } %>
             </table>

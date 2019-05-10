@@ -5,16 +5,17 @@ var databaseSalas = require('./../databases/databaseSala');
 var databasePelis = require('./../databases/databasePelis');
 var databasePromos = require('./../databases/databasePromos');
 var databaseHorarios = require('./../databases/databaseHorarios');
+var databaseEntradas = require('./../databases/databaseEntradas')
 //importar models
 
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  //if(req.session.user!=undefined){
-    console.log(req.session.user+' hey hey')
-  //}
-  res.render('index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+
+  pelis = await databasePelis.verPelisF(); 
+
+  res.render('index', { title: 'Express', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
 });
 
 router.get('/ap', function(req, res, next) {
@@ -26,19 +27,36 @@ router.get('/apIndex', function(req, res, next) {
 });
 
 router.get('/menu', function(req, res, next) {
-  res.render('menu', { title: 'AluCine' });
+
+  res.render('menu', { title: 'AluCine',nombre:req.session.nombre});
 });
 
 router.get('/inicioSesion', function(req, res, next) {  
   res.render('inicioSesion', { title: 'AluCine' });
 });
 
+router.get('/logout',(req,res) => {
+  req.session.destroy((err) => {
+      if(err) {
+          return console.log(err);
+      }
+      res.redirect('/');
+  });
+
+});
+
 router.post('/iniSession', async function(req, res) {  
   var usu =  await databaseUsuarios.sessionUsu(req);
-  //console.log(usu.email+' pipo');
-  req.session.user = usu.email;
-  //res.render('index',{username:usu.email})
-  res.send(usu.nombre+'<br>'+usu.apellidos);
+  if(usu.tipo == 'admin'){
+    res.render('apIndex',{ title: 'AluCine' });
+  }
+  else if(usu.tipo == 'undefined'){
+    res.render('ap', { title: 'AluCine', error: 'El usuario o contraseña no son validos' });
+  }else{
+    req.session.tipo = usu.tipo;
+    res.render('index',{nombre:usu.nombre,apellidos:usu.apellidos});
+  }
+  
 });
 
 router.get('/registro', function(req, res, next) {
@@ -46,19 +64,36 @@ router.get('/registro', function(req, res, next) {
 
 });
 
-router.get('/cartelera', function(req, res, next) {
-  res.render('cartelera', { title: 'AluCine' });
+router.get('/cartelera', async function(req, res, next) {
+  pelis = await databasePelis.verPelisF();
+  res.render('cartelera', { title: 'AluCine', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
 });
 
 router.get('/estrenos', function(req, res, next) {
-  res.render('estrenos', { title: 'AluCine' });
+  res.render('estrenos', { title: 'AluCine',nombre:req.session.nombre });
 });
 
 
 //backUsuario
 
-router.get('/entradas', function(req, res, next) {
-  res.render('entradas', { title: 'AluCine' });
+router.get('/entradas', async function(req, res, next) {
+  var sesion = await databaseEntradas.getSesion(req);
+  var ocupadas = await databaseEntradas.verEntradas(req);
+  var filas = [];
+  var columnas = [];
+  
+  for(i = 0;i<ocupadas.length;i++){
+    filas[i] = ocupadas[i].fila;
+    columnas[i] = ocupadas[i].butaca;
+  }
+  console.log(filas[0]+' '+columnas[0])
+  res.render('entradas', { title: 'AluCine',nombre:req.session.nombre,apellidos:undefined, sesion:sesion,filas:filas,butacas:columnas });
+});
+
+router.get('/addEntradas', async function(req, res, next) {
+var asiento = await databaseEntradas.verButaca(req);
+//await databaseEntradas.addEntrada(req,asiento);
+ res.send('has seleccionado la fila '+asiento[0]+' y la butaca '+asiento[1]+' para la pelicula '+asiento[2][1]+ ' a las '+asiento[3][1])
 });
 
 router.post('/addUsuario', async function(req, res, next) {
@@ -186,33 +221,42 @@ router.get('/busquedaPromos/:pagina',async function(req, res) {
 });
 
 //HORARIOOOOSSSSSSSSSSSSSSSSSS
-router.get('/registroHorario', function(req, res, next) {
-  res.render('registroHorario', { title: 'AluCine' });
+router.get('/registroHorario', async function(req, res, next) {
+  pelis = await databasePelis.verPelisF();
+  res.render('registroHorario', { title: 'AluCine' , pelis:pelis});
 });
+
 router.post('/addHorario', async function(req, res, next) {
   await databaseHorarios.addHorario(req);
   res.redirect('/backHorarios/1');
 });
+
 router.get('/backHorarios/:pagina',async function(req, res, next) {
   var horarios = await databaseHorarios.verHorarios(req);
+  var pelis = await databasePelis.verPelisF(req);
   res.render('backHorarios',  { 
     horarios: horarios[0],
     pag: horarios[1],
     paginas: horarios[2],
     pagSig: horarios[3],
     pagAnte: horarios[4],
-    busque: null
+    busque: null,
+    pelis:pelis
   } );
 });
+
 router.get('/busquedaHorarios/:pagina',async function(req, res) {
   var horarios = await databaseHorarios.busquedaHorarios(req);
+  var pelis = await databasePelis.verPelisF(req);
+  console.log("hola"+req.query.busqueda)
   res.render('backHorarios',  { 
     horarios: horarios[0],
     pag: horarios[1],
     paginas: horarios[2],
     pagSig: horarios[3],
     pagAnte: horarios[4],
-    busque: req.query.busqueda
+    busque: req.query.busqueda,
+    pelis:pelis
   } );
 });
 
@@ -224,7 +268,6 @@ router.get('/registroPelicula', function(req, res, next) {
 });
 
 router.post('/addPeli', async function(req, res, next) {
-  console.log(req.body.genero);
   await databasePelis.addPeli(req);
   res.redirect('/backPeliculas/1');
 });
@@ -252,12 +295,18 @@ router.get('/busquedaPeliculas/:pagina',async function(req, res) {
     busque: req.query.busqueda
   } );
 });
-router.get('/detallesPelicula', function(req, res, next) {
-  res.render('detallesPelicula', { title: 'AluCine' });
+router.get('/detallesPelicula/:id', async function(req, res, next) {
+  var pelicula = await databasePelis.datosPeli(req);
+  var horario = await databaseHorarios.verHorariosF(req,pelicula.id);
+  res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:req.session.nombre,apellidos:'',horarios:horario});
 });
 
 router.get('/registroPeli', function(req,res){
   res.render('registroPeli',{title:'AluCine'});
+});
+
+router.get('/mantenimiento', function(req,res){
+  res.render('mantenimiento',{title:'AluCine'});
 });
 
 module.exports = router;

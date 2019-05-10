@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="funciones/jquery.fancybox.js"></script>
 
-    <title>Área privada</title>
+    <title>Iniciar Sesión</title>
 </head>
 <body class="ap loginAp">
 
@@ -24,7 +24,7 @@
                 <img src="imagenes/AluCine.png" alt="logo AluCine">
             </div>
             <div>
-                <form action="#" method="post">
+                <form action="/iniSession" method="post">
                     <label for="user" class="inputIcon">
                         <input type="text" name="user" placeholder="Usuario...">
                         <i class="fas fa-user"></i>
@@ -34,9 +34,9 @@
                         <i class="fas fa-lock"></i>
                     </label>
 
-                    <a href="apIndex"><input class="btn" type="button" name="btnLogin" value="Login"></a>
+                    <!--a href="apIndex"><input class="btn" type="button" name="btnLogin" value="Login"></a-->
                     <!--Sustituir la linea de arriba por esta-->
-                    <!--input class="btn" type="submit" name="btnLogin" value="Login"-->
+                    <input class="btn" type="submit" name="btnLogin" value="Login">
                 </form>
             </div>
         </div>

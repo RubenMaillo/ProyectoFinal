@@ -12,6 +12,7 @@ exports.addPeli=async function(req){
     });
     await peli.save();
 }
+
 exports.verPelis= async function(req){
     var limitPag = 2;
     var pag = req.params.pagina;
@@ -27,6 +28,18 @@ exports.verPelis= async function(req){
     var datos = [v1,v2,v3,v4,v5];
     return datos;
 }
+
+exports.verPelisF= async function(req){
+    var pelis = await Peli.find()
+    return pelis;
+}
+
+exports.datosPeli = async function(req){
+    var id=req.params.id;
+    var pelicula = await Peli.findOne({_id:id});
+    return pelicula;
+}
+
 exports.busquedaPelis = async function(req){
     var busq = req.query.busqueda;
     var limitPag = 2;
