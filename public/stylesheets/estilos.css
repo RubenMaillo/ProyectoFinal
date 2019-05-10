@@ -941,7 +941,7 @@ table{
 
 .select{
     background: rgb(31, 226, 132) !important;
-    border-top: 0.5px solid #CB3030;
+    border-top: 0.5px solid #CB3030 !important;
 }
 
 
