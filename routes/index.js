@@ -130,12 +130,25 @@ res.render('backUsuarios',{
   pagAnte: usu[4],
   busque: req.query.busqueda } );
 });
+router.get('/borrarUsu/:id', async function(req){
+  console.log(req.params.id);
+  await databaseUsuarios.borrarUsu(req);
+});
+router.get('/editUsu/:id',async function(req,res) {
+console.log(req.params.id);
+  usu = await databaseUsuarios.busquedaUsu(req);
+  res.render('editUsuario',{
+    usu : usu
+  });
+});
+router.post('/editarUsu', async function(req){
+  
+});
 
 
 router.get('/backPromos', function(req, res, next) {
   res.render('backPromos', { title: 'AluCine' });
 });
-
 
 
 //backSalas
