@@ -43,7 +43,12 @@
             </a>
             
             <form action="/busquedaHorarios/1" method="GET">
-                <input type="text" name="busqueda" placeholder="busqueda global">
+                <select name="pelicula">
+                    <option value="">-- Película --</option>
+                    <% for(var i=0; i< pelis.length; i++){ %>
+                        <option value="<%= pelis[i]._id %>"><%= pelis[i].nombre %></option>
+                    <%}%>
+                </select>
                 <button><i class="fas fa-search"></i></button>
             </form>
             <%if(busque){%>
@@ -58,7 +63,7 @@
                 <%if(typeof horarios!='undefined'){%>
                     <% for(var i=0; i< horarios.length; i++){%>
                         <tr>
-                            <td><%= horarios[i].idPeli %></td>
+                            <td><%= horarios[i].pelicula %></td>
                             <td><%= horarios[i].fecha %></td>
                             <td><%= horarios[i].hora %></td>
                         </tr>

@@ -130,12 +130,25 @@ res.render('backUsuarios',{
   pagAnte: usu[4],
   busque: req.query.busqueda } );
 });
+router.get('/borrarUsu/:id', async function(req){
+  console.log(req.params.id);
+  await databaseUsuarios.borrarUsu(req);
+});
+router.get('/editUsu/:id',async function(req,res) {
+console.log(req.params.id);
+  usu = await databaseUsuarios.busquedaUsu(req);
+  res.render('editUsuario',{
+    usu : usu
+  });
+});
+router.post('/editarUsu', async function(req){
+  
+});
 
 
 router.get('/backPromos', function(req, res, next) {
   res.render('backPromos', { title: 'AluCine' });
 });
-
 
 
 //backSalas
@@ -208,33 +221,42 @@ router.get('/busquedaPromos/:pagina',async function(req, res) {
 });
 
 //HORARIOOOOSSSSSSSSSSSSSSSSSS
-router.get('/registroHorario', function(req, res, next) {
-  res.render('registroHorario', { title: 'AluCine' });
+router.get('/registroHorario', async function(req, res, next) {
+  pelis = await databasePelis.verPelisF();
+  res.render('registroHorario', { title: 'AluCine' , pelis:pelis});
 });
+
 router.post('/addHorario', async function(req, res, next) {
   await databaseHorarios.addHorario(req);
   res.redirect('/backHorarios/1');
 });
+
 router.get('/backHorarios/:pagina',async function(req, res, next) {
   var horarios = await databaseHorarios.verHorarios(req);
+  var pelis = await databasePelis.verPelisF(req);
   res.render('backHorarios',  { 
     horarios: horarios[0],
     pag: horarios[1],
     paginas: horarios[2],
     pagSig: horarios[3],
     pagAnte: horarios[4],
-    busque: null
+    busque: null,
+    pelis:pelis
   } );
 });
+
 router.get('/busquedaHorarios/:pagina',async function(req, res) {
   var horarios = await databaseHorarios.busquedaHorarios(req);
+  var pelis = await databasePelis.verPelisF(req);
+  console.log("hola"+req.query.busqueda)
   res.render('backHorarios',  { 
     horarios: horarios[0],
     pag: horarios[1],
     paginas: horarios[2],
     pagSig: horarios[3],
     pagAnte: horarios[4],
-    busque: req.query.busqueda
+    busque: req.query.busqueda,
+    pelis:pelis
   } );
 });
 
@@ -281,6 +303,10 @@ router.get('/detallesPelicula/:id', async function(req, res, next) {
 
 router.get('/registroPeli', function(req,res){
   res.render('registroPeli',{title:'AluCine'});
+});
+
+router.get('/mantenimiento', function(req,res){
+  res.render('mantenimiento',{title:'AluCine'});
 });
 
 module.exports = router;
