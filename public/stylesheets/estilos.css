@@ -961,3 +961,8 @@ table{
 .datos tr{
     cursor: pointer !important;
 }
+
+
+.aviso{
+    margin-top: 50px;
+}
