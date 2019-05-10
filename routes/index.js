@@ -92,7 +92,7 @@ router.get('/entradas', async function(req, res, next) {
 
 router.get('/addEntradas', async function(req, res, next) {
 var asiento = await databaseEntradas.verButaca(req);
-//await databaseEntradas.addEntrada(req,asiento);
+await databaseEntradas.addEntrada(req,asiento);
  res.send('has seleccionado la fila '+asiento[0]+' y la butaca '+asiento[1]+' para la pelicula '+asiento[2][1]+ ' a las '+asiento[3][1])
 });
 
