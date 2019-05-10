@@ -12,20 +12,10 @@ var databaseEntradas = require('./../databases/databaseEntradas')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-<<<<<<< HEAD
-  //if(req.session.user!=undefined){
-    console.log(req.session.user+' hey hey')
-  //}
-
-  pelis = await databasePelis.verPelisF(); 
-
-  res.render('index', { title: 'Express', pelis:pelis,nombre:undefined,apellidos:undefined});
-=======
 
   pelis = await databasePelis.verPelisF(); 
 
   res.render('index', { title: 'Express', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
->>>>>>> cfab812025b51b2590e13a1c5dc27c29ecf9fc52
 });
 
 router.get('/ap', function(req, res, next) {
@@ -76,19 +66,11 @@ router.get('/registro', function(req, res, next) {
 
 router.get('/cartelera', async function(req, res, next) {
   pelis = await databasePelis.verPelisF();
-<<<<<<< HEAD
-  res.render('cartelera', { title: 'AluCine', pelis:pelis ,nombre:undefined,apellidos:undefined});
-});
-
-router.get('/estrenos', function(req, res, next) {
-  res.render('estrenos', { title: 'AluCine' ,nombre:undefined,apellidos:undefined});
-=======
   res.render('cartelera', { title: 'AluCine', pelis:pelis,nombre:req.session.nombre,apellidos:undefined });
 });
 
 router.get('/estrenos', function(req, res, next) {
   res.render('estrenos', { title: 'AluCine',nombre:req.session.nombre });
->>>>>>> cfab812025b51b2590e13a1c5dc27c29ecf9fc52
 });
 
 
