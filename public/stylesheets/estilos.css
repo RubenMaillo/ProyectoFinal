@@ -764,11 +764,25 @@ footer{
     color: rgb(160, 160, 160);
     font-size: 3em;
     float: left;
+    margin-right: 10px; 
 }
 
-.new:hover{
+.new:hover, #bEditar:hover i, #bBorrar:hover i{
     color: #CB3030;
 }
+
+.del, .edit{
+    color: rgb(160, 160, 160);
+    font-size: 3.25em;
+    float: left;    
+    transition: all .1s;
+}
+
+#bEditar, #bBorrar{
+    border: none;
+    background: none;
+}
+
 
 .contenido form{
     margin-left: 50em;
@@ -941,7 +955,9 @@ table{
 
 .select{
     background: rgb(31, 226, 132) !important;
-    border-top: 0.5px solid #CB3030;
+    border-top: 0.5px solid #CB3030 !important;
 }
 
-
+.datos tr{
+    cursor: pointer !important;
+}
