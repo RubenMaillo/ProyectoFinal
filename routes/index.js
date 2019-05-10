@@ -141,8 +141,8 @@ console.log(req.params.id);
     usu : usu
   });
 });
-router.post('/editarUsu', async function(req){
-  
+router.post('/editUsuario', async function(req){
+  usu = await databaseUsuarios.editUsu(req);
 });
 
 
@@ -295,11 +295,29 @@ router.get('/busquedaPeliculas/:pagina',async function(req, res) {
     busque: req.query.busqueda
   } );
 });
+
 router.get('/detallesPelicula/:id', async function(req, res, next) {
   var pelicula = await databasePelis.datosPeli(req);
   var horario = await databaseHorarios.verHorariosF(req,pelicula.id);
   res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:req.session.nombre,apellidos:'',horarios:horario});
 });
+
+router.get('/borrarPeli/:id', async function(req){
+  console.log(req.params.id);
+  await databaseUsuarios.borrarUsu(req);
+});
+router.get('/editPeli/:id',async function(req,res) {
+console.log(req.params.id);
+  usu = await databaseUsuarios.busquedaUsu(req);
+  res.render('editPelicula',{
+    usu : usu
+  });
+});
+
+router.post('/editPelicula', async function(req){
+  usu = await databaseUsuarios.editUsu(req);
+});
+
 
 router.get('/registroPeli', function(req,res){
   res.render('registroPeli',{title:'AluCine'});

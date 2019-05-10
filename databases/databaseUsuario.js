@@ -84,5 +84,18 @@ exports.verusus = async function(req){
    return resp;
  }
 exports.editUsu = async function(req){
-   
+   console.log(req.body._id);
+   var usu = await Usuario.updateOne(
+      {_id:req.body._id,},
+      {
+         dni:req.body.dni,
+         nombre:req.body.nombre,
+         apellidos:req.body.apellidos,
+         email:req.body.user,
+         password: req.body.pass,
+         telefono:req.body.telefono
+      },
+
+      
+   );
 }

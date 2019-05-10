@@ -24,7 +24,7 @@
 
     <form action="/editUsuario" method="POST">
         <input type="text" name="user" value='<%=usu.email %>' placeholder="Usuario (e-mail)*">
-        
+        <input type="text" name="_id" value='<%=usu._id %>' hidden>
         <input type="password" name="pass" value='<%=usu.password %>' placeholder="Contraseña">
         <input type="password" name="pass2" value='<%=usu.password %>' placeholder="Repite la Contraseña">
 
