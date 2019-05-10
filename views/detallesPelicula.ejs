@@ -32,12 +32,16 @@
             </div>
             <div class="infoPeli">
                 <div >
+                    <p><b>Título:</b> <%= pelicula.nombre %></p>
                     <p><b>Fecha de estreno:</b> <%= pelicula.anio %></p>
                     <p><b>Directores:</b> Anthony Russo, Joe Russo</p>
                     <p><b>Música compuesta por:</b> Alan Silvestri</p>
                     <p><b>Guion: </b>Stephen McFeely, Christopher Markus</p>
                     <p><b>Historia de:</b> Stan Lee, Jack Kirby, Jim Starlin</p>
                     <p><b>Sinopsis:</b> <%= pelicula.descripcion %></p>
+                </div>
+                <div>
+                    <h3>SESIONES</h3><p><% for(i=0; i < horarios.length;i++){%><p><a href='/entradas?pelicula=<%= pelicula._id%>&hora=<%= horarios[i]._id %>'><%= horarios[i].hora %></a> <%= horarios[i].fecha %></p><%} %></p>
                 </div>
             </div>
         </div>

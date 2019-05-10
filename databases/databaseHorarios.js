@@ -24,6 +24,7 @@ exports.verHorarios = async function(req){
     var datos = [v1,v2,v3,v4,v5];
     return datos;
 }
+
 exports.busquedaHorarios = async function(req){
     var busq = req.query.busqueda;
     console.log(busq);
@@ -48,4 +49,8 @@ exports.busquedaHorarios = async function(req){
     var v5 = Number(pag)-1;
     var datos = [v1,v2,v3,v4,v5];
     return datos;
+}
+exports.verHorariosF= async function(req,idpelicula){
+    var hora = await Horario.find({idPeli:idpelicula})
+    return hora;
 }

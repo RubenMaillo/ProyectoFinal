@@ -9,7 +9,7 @@ exports.addSala=async function(req){
     await sala.save();
 }
 exports.verSalas= async function(req){
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Sala.find().countDocuments();
     var salas = await Sala.find()
@@ -25,7 +25,7 @@ exports.verSalas= async function(req){
 }
 exports.busquedaSalas = async function(req){
     var busq = req.query.busqueda;
-    var limitPag = 1;
+    var limitPag = 2;
     var pag = req.params.pagina;
     var cuenta = await Sala.find({
         $or:[

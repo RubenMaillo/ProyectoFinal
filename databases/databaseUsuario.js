@@ -1,7 +1,7 @@
 const Usuario = require('../models/usuarios');
 
 exports.verusus = async function(req){
-   var limitPag = 5;
+   var limitPag = 2;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find().countDocuments();
    var usus = await Usuario.find()
@@ -37,14 +37,14 @@ exports.verusus = async function(req){
         password: req.body.pass
         });
     //console.log(usu[0]);
-    //req.session.user = usu[0].email;
-    //console.log(req.session.user)
+    req.session.user = usu[0].email;
+    req.session.nombre = usu[0].nombre;
     return usu[0];
     
  }
  exports.busquedaUsus = async function(req){
    var busq = req.query.busqueda;
-   var limitPag = 5;
+   var limitPag = 2;
    var pag = req.params.pagina;
    var cuenta = await Usuario.find({
       $or:[
