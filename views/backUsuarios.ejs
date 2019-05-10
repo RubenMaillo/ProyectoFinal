@@ -65,24 +65,26 @@
 
             <table class="datos">
 
-                    <tr class="headTabla">
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>email</th>
+                <tr class="headTabla">
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>email</th>
+                </tr>
+
+
+                <%if(typeof usus!='undefined'){%>
+                <% for(var i=0; i< usus.length; i++){%>
+                    <tr class="tbody" id="<%= usus[i]._id %>">
+                        <td id="dni"><%= usus[i].dni %></td>
+                        <td id="nombre"><%= usus[i].nombre %></td>
+                        <td id="apellidos"><%= usus[i].apellidos %></td>
+                        <td id="email"><%= usus[i].email %></td>
                     </tr>
-
-
-                    <%if(typeof usus!='undefined'){%>
-                    <% for(var i=0; i< usus.length; i++){%>
-                        <tr class="tbody" id="<%= usus[i]._id %>">
-                            <td id="dni"><%= usus[i].dni %></td>
-                            <td id="nombre"><%= usus[i].nombre %></td>
-                            <td id="apellidos"><%= usus[i].apellidos %></td>
-                            <td id="email"><%= usus[i].email %></td>
-                        </tr>
-                        <% };} %>
+                <% };} %>
             </table>
+            <br>
+            
             <!--BOTONES DE PAGINACION-->
             <% if(paginas>0){%>
                 <% if(pag == 1){%>
