@@ -108,15 +108,17 @@
             $('#bEditar').attr('disabled', true);
         }
     }
+
     $('tr.tbody').click(function(){
-        $(this).toggleClass('select').css("background-color", "SpringGreen");
+        $(this).toggleClass('select');
         cambio();
     });
+
     //borrar los usuarios
     $('#bBorrar').click(function(){
-        dnis = "";
+        dnis = "hola";
         $('tr.select').each(function(){
-            var dnis = dnis +", "+ $(this).find('#dni').text();
+            var dnis = dnis +", "+ $(this).find('#dni').val();
         });
         $('tr.select').each(function(){
             var id = $(this).attr('id');

@@ -121,6 +121,7 @@ nav li{
     position: relative;
     cursor: pointer;
     color: white;
+    font-size: 18px;
 }
 
 nav li::before{
@@ -935,6 +936,12 @@ table{
     background: rgb(184, 184, 184) !important;
     width: 80% !important;
     margin: 10px; 
+}
+
+
+.select{
+    background: rgb(31, 226, 132) !important;
+    border-top: 0.5px solid #CB3030;
 }
 
 
