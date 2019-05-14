@@ -40,49 +40,37 @@
                     <p><b>Historia de:</b> Stan Lee, Jack Kirby, Jim Starlin</p>
                     <p><b>Sinopsis:</b> <%= pelicula.descripcion %></p>
                 </div>
-                <div>
-                    <h3>SESIONES</h3><p><% for(i=0; i < horarios.length;i++){%><p><a href='/entradas?pelicula=<%= pelicula._id%>&hora=<%= horarios[i]._id %>'><%= horarios[i].hora %></a> <%= horarios[i].fecha %></p><%} %></p>
-                </div>
+            
             </div>
         </div>
+
+       <a href="https://www.youtube.com/watch?v=Py3JDqMl-84" target="blank"><button class="verRojo">Ver trailer</button></a>
     </section>
 
     <section class="reparto">
-        <div class="actor">
-            <img src="imagenes/ce.jpg" alt="">
-            <div>
-                <h3>Chris Evans</h3>
-            </div>
-        </div>
-        <div class="actor">
-            <img src="imagenes/sj.jpg" alt="">
-            <div>
-                <h3>Scarlett Johansson</h3>
-            </div>
-        </div>
-        <div class="actor">
-            <img src="imagenes/rd.jpg" alt="">
-            <div>
-                <h3>Robert Downey Jr.</h3>
-            </div>
-        </div>
-        <div class="actor">
-            <img src="imagenes/mr.jpg" alt="">
-            <div>
-                <h3>Mark Ruffalo</h3>
-            </div>
-        </div>
-        <div class="actor">
-            <img src="imagenes/bl.jpg" alt="">
-            <div>
-                <h3>Brie Larson</h3>
-            </div>
-        </div>
-        <div class="actor">
-            <img src="imagenes/chris.jpg" alt="">
-            <div>
-                <h3>Chris Pratt</h3>
-            </div>
+        <div>
+            <h1>SESIONES</h1>
+            <table border="1px solid grey">
+                <tr>
+                    <th>Hora</th>
+                    <th>Fecha</th>
+                </tr>
+                
+
+                <% for(i=0; i < horarios.length;i++){%>
+                    <tr>
+                        <td>
+                            <a href='/entradas?pelicula=<%= pelicula._id%>&hora=<%= horarios[i]._id %>'><%= horarios[i].hora %></a>
+                        </td>
+                        <td>
+                            <%= horarios[i].fecha %>
+                        </td>
+                    </tr>
+                <%}%>
+                 
+
+
+            </table>
         </div>
     </section>
 
