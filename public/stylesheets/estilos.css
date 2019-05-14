@@ -460,17 +460,22 @@ p a{
 }
 .detalles{
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     margin-top: 60px;
+    margin-bottom: 60px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 
+.detalles a{
+    margin-top: 30px;
+}
+
 .info{
     width: 100%;
-    height: 80%;
+    height: 55%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -479,6 +484,7 @@ p a{
 .cabecera{
     width: 100%;
     height: 20%;
+    margin-top: 150px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -497,6 +503,7 @@ p a{
     flex-direction: column;
     padding-left: 3%;
     padding-right: 3%;
+    overflow-y: auto;
 }
 
 .infoPeli p{
