@@ -59,10 +59,10 @@
                         </tr>
                 <%if(typeof pelis!='undefined'){%>
                     <% for(var i=0; i< pelis.length; i++){%>
-                        <tr>
-                            <td><%= pelis[i].nombre %></td>
-                            <td><%= pelis[i].anio %></td>
-                            <td><%= pelis[i].genero %></td>
+                        <tr class="tbody" id="<%= pelis[i]._id %>">
+                            <td id="nombre"><%= pelis[i].nombre %></td>
+                            <td id="apellidos"><%= pelis[i].anio %></td>
+                            <td id="email"><%= pelis[i].genero %></td>
                         </tr>
                         <% };} %>
             </table>
@@ -85,4 +85,45 @@
         </div>
     </section>
 </body>
+<script>
+    function cambio(){
+        if($('tr').hasClass('select')){
+            $('#bBorrar').attr('disabled', false);
+            if($('tr.select').length==1){
+                $('#bEditar').attr('disabled', false);
+            }else{
+                $('#bEditar').attr('disabled', true);
+            }
+        }else{
+            $('#bBorrar').attr('disabled', true);
+            $('#bEditar').attr('disabled', true);
+        }
+    }
+
+    $('tr.tbody').click(function(){
+        $(this).toggleClass('select');
+        cambio();
+    });
+
+    //borrar las peliculas
+    $('#bBorrar').click(function(){
+        ids = "";
+        $('tr.select').each(function(){
+            var ids = ids +", "+ $(this).find('#dni').val();
+        });
+        $('tr.select').each(function(){
+            var id = $(this).attr('id');
+            var url = "/borrarUsu/"+id;
+            $.ajax({
+                url:url
+            });
+        });
+        alert("se han eliminado las siguientes Peliculas: " + id);
+        window.location.href='/backPeliculas/1';
+    });
+    //edit peli
+    $('#bEditar').click(function(){
+        window.location.href='/editPeli/'+$('tr.select').attr('id');
+    });
+</script>
 </html>
