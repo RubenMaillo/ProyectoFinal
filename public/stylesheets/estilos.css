@@ -962,3 +962,31 @@ table{
     margin-top: 50px;
 }
 
+
+#bCompra{
+    margin-bottom: 100px;
+    margin-top: -100px;
+    width: 100px;
+    height: 50px !important;
+    font-size: 20px !important; 
+}
+
+.prueba{
+    width: 100% !important;
+}
+
+.estrenos{
+    width: 100% !important;
+    margin-top: 50px !important;
+    background: #941C2F;
+}
+
+.estrenos .peli{
+    width: 70% !important;
+    flex-direction: row;
+}
+
+.cabecera2estrenos{
+    color: #ECECEC;
+    margin-top: 130px !important;
+}
