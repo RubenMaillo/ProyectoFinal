@@ -63,9 +63,9 @@
                 <%if(typeof pelis!='undefined'){%>
                     <% for(var i=0; i< pelis.length; i++){%>
                         <tr class="tbody" id="<%= pelis[i]._id %>">
-                            <td id="nombre"><%= pelis[i].nombre %></td>
-                            <td id="apellidos"><%= pelis[i].anio %></td>
-                            <td id="email"><%= pelis[i].genero %></td>
+                            <td ><%= pelis[i].nombre %></td>
+                            <td ><%= pelis[i].anio %></td>
+                            <td ><%= pelis[i].genero %></td>
                         </tr>
                         <% };} %>
             </table>
@@ -110,19 +110,14 @@
 
     //borrar las peliculas
     $('#bBorrar').click(function(){
-        ids = "";
-        $('tr.select').each(function(){
-            var ids = ids +", "+ $(this).find('#dni').val();
-        });
         $('tr.select').each(function(){
             var id = $(this).attr('id');
-            alert(id);
             var url = "/borrarPeli/"+id;
             $.ajax({
                 url:url
             });
         });
-        //alert("se han eliminado las siguientes Peliculas: " + ids);
+        alert("se han eliminado las Peliculas");
         window.location.href='/backPeliculas/1';
     });
     //edit peli

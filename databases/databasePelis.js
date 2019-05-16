@@ -14,7 +14,7 @@ exports.addPeli=async function(req){
 }
 
 exports.verPelis= async function(req){
-    var limitPag = 2;
+    var limitPag = 10;
     var pag = req.params.pagina;
     var cuenta = await Peli.find().countDocuments();
     var pelis = await Peli.find()
@@ -42,7 +42,7 @@ exports.datosPeli = async function(req){
 
 exports.busquedaPelis = async function(req){
     var busq = req.query.busqueda;
-    var limitPag = 2;
+    var limitPag = 10;
     var pag = req.params.pagina;
     var cuenta = await Peli.find({
         $or:[

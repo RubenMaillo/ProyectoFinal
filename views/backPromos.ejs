@@ -109,18 +109,15 @@
     //borrar las Promos
     $('#bBorrar').click(function(){
         ids = "";
-        $('tr.select').each(function(){
-            var ids = ids +", "+ $(this).find('#dni').val();
-        });
+        
         $('tr.select').each(function(){
             var id = $(this).attr('id');
             var url = "/borrarPromo/"+id;
-            alert(url);
             $.ajax({
                 url:url
             });
         });
-        alert("se han eliminado las siguientes promos: " + ids);
+        alert("se han eliminado las promociones");
         window.location.href='/backPromos/1';
     });
     //edit Promo

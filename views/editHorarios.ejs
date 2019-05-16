@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/stylesheets/estilos.css">
+    
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="/funciones/jquery.fancybox.js"></script>
+        <script src="/funciones/funciones.js"></script>
+    
+        <title>AluCine</title>
+        <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
+</head>
+<body id="registro" class="flex">
+    <section class="menuLat">
+        <div>
+            <a href="/apIndex"><img src="/imagenes/AluCine1.png" alt=""></a>
+        </div>
+
+        <div class="opcionesLat">
+            <a href="/backUsuarios/1"><i class="fas fa-user"></i>&nbsp;&nbsp;Usuarios</a>
+            <a href="/backPeliculas/1"><i class="fas fa-film"></i>&nbsp;&nbsp;Películas</a>
+            <a href="/backPromos/1"><i class="fas fa-percent"></i>&nbsp;&nbsp;Promociones</a>
+            <a href="/backHorarios/1"><i class="fas fa-hourglass-end"></i>&nbsp;&nbsp;Horarios</a>
+            <a href="/backSalas/1"><i class="fas fa-home"></i>&nbsp;&nbsp;Salas</a>
+        </div>
+
+        <div class="sesionLat">
+            <p>Sesión</p>
+        </div>
+    </section>
+
+    <section id="contReg" class="contenido flex">
+        <h2 class="title">Horario AluCine</h2>
+
+        <form id="horario" action="/addHorario" method="POST">
+            <select name="pelicula">
+                <option value="">-- Película --</option>
+                <% for(var i=0; i< pelis.length; i++){ %>
+                    <option value="<%= pelis[i].nombre %>"><%= pelis[i].nombre %></option>
+                <%}%>
+            </select>
+    
+            <select name="fecha">
+                <option value="">-- Día --</option>
+                <option value="0">Lunes</option>
+                <option value="1">Martes</option>
+                <option value="2">Miércoles</option>
+                <option value="3">Jueves</option>
+                <option value="4">Viernes</option>
+                <option value="5">Sábado</option>
+                <option value="6">Domingo</option>
+            </select>
+            <button>+</button>
+    
+            
+            <select name="hora">
+                <option value="">-- Hora --</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+                <option value="20:00">20:00</option>
+                <option value="22:00">22:00</option>
+            </select>
+            <button>+</button>
+
+            <input class="btn" type="submit" name="btnLogin" value="Añadir Horario">
+        </form>
+    </section>
+</body>
+</html>

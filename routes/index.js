@@ -186,6 +186,23 @@ router.post('/addSala',async function(req, res) {
   res.redirect('/backSalas/1');
 
 });
+router.get('/borrarSala/:id', async function(req,res){
+  console.log(req.params.id);
+  await databaseSalas.borrarSala(req);
+});
+
+router.get('/editSala/:id',async function(req,res) {
+console.log(req.params.id);
+sala = await databaseSalas.datosSala(req);
+  res.render('editSala',{
+    sala : sala
+  });
+});
+router.post('/editSala', async function(req,res){
+  sala = await databaseSalas.editSala(req);
+  res.redirect('/backSalas/1');
+});
+
 
 
 
@@ -324,7 +341,7 @@ router.get('/detallesPelicula/:id', async function(req, res, next) {
 });
 
 router.get('/borrarPeli/:id', async function(req,res){
-  console.log(req.params.id);
+  console.log(req.params.id+"awuiju");
   await databasePelis.borrarPeli(req);
 });
 router.get('/editPeli/:id',async function(req,res) {
