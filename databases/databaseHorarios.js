@@ -51,6 +51,6 @@ exports.busquedaHorarios = async function(req){
     return datos;
 }
 exports.verHorariosF= async function(req,idpelicula){
-    var hora = await Horario.find({idPeli:idpelicula})
+    var hora = await Horario.find({pelicula:idpelicula})
     return hora;
 }

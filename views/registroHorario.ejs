@@ -45,19 +45,19 @@
             <select name="pelicula">
                 <option value="">-- Película --</option>
                 <% for(var i=0; i< pelis.length; i++){ %>
-                    <option value="<%= pelis[i].nombre %>"><%= pelis[i].nombre %></option>
+                    <option value="<%= pelis[i]._id %>"><%= pelis[i].nombre %></option>
                 <%}%>
             </select>
     
             <select name="fecha">
                 <option value="">-- Día --</option>
-                <option value="0">Lunes</option>
-                <option value="1">Martes</option>
-                <option value="2">Miércoles</option>
-                <option value="3">Jueves</option>
-                <option value="4">Viernes</option>
-                <option value="5">Sábado</option>
-                <option value="6">Domingo</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miércoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
             </select>
             <button>+</button>
     
@@ -73,6 +73,13 @@
 
             <input class="btn" type="submit" name="btnLogin" value="Añadir Horario">
         </form>
+        <!--form action="/addHorario" method="POST">
+            <input type="text" name="idPeli" placeholder="idPeli">
+            <input type="text" name="idPromo" placeholder="idPromo">
+            <input type="date" name="fecha">
+            <input type="time" name="hora">
+            <input class="btn" type="submit" name="btnLogin" value="Añadir Horario">
+        </form-->
     </section>
 </body>
 </html>
