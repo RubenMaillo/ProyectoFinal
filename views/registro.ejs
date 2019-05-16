@@ -20,21 +20,41 @@
         <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
 </head>
 <body id="registro">
-    <h2 class="title">Usuario AluCine | Crea tu cuenta</h2>
+    <section class="menuLat">
+        <div>
+            <a href="/apIndex"><img src="/imagenes/AluCine1.png" alt=""></a>
+        </div>
 
-    <form action="/addUsuario" method="POST">
-        <input type="text" name="user" placeholder="Usuario (e-mail)*">
-        
-        <input type="password" name="pass" placeholder="Contraseña">
-        <input type="password" name="pass2" placeholder="Repite la Contraseña">
-        <%= contrasena %>
+        <div class="opcionesLat">
+            <a href="/backUsuarios/1"><i class="fas fa-user"></i>&nbsp;&nbsp;Usuarios</a>
+            <a href="/backPeliculas/1"><i class="fas fa-film"></i>&nbsp;&nbsp;Películas</a>
+            <a href="/backPromos/1"><i class="fas fa-percent"></i>&nbsp;&nbsp;Promociones</a>
+            <a href="/backHorarios/1"><i class="fas fa-hourglass-end"></i>&nbsp;&nbsp;Horarios</a>
+            <a href="/backSalas/1"><i class="fas fa-home"></i>&nbsp;&nbsp;Salas</a>
+        </div>
 
-        <input type="text" name="nombre" placeholder="Nombre*">
-        <input type="text" name="apellidos" placeholder="Apellidos*">
-        <input type="text" name="telefono" placeholder="Nº de teléfono">
-        <input type="text" name="dni" placeholder="Nº de DNI">
+        <div class="sesionLat">
+            <p>Sesión</p>
+        </div>
+    </section>
 
-        <input class="btn" type="submit" name="btnLogin" value="Crear cuenta">
-    </form>
+<div class="flex" style="flex-direction: column;width: 85vw; height: 100%; background: #ECECEC;">
+        <h2 class="title">Usuario AluCine | Crea tu cuenta</h2>
+
+        <form action="/addUsuario" method="POST">
+            <input type="text" name="user" placeholder="Usuario (e-mail)*" style="background: white;">
+            
+            <input type="password" name="pass" placeholder="Contraseña" style="background: white;">
+            <input type="password" name="pass2" placeholder="Repite la Contraseña" style="background: white;">
+            <%= contrasena %>
+
+            <input type="text" name="nombre" placeholder="Nombre*" style="background: white;">
+            <input type="text" name="apellidos" placeholder="Apellidos*" style="background: white;">
+            <input type="text" name="telefono" placeholder="Nº de teléfono" style="background: white;">
+            <input type="text" name="dni" placeholder="Nº de DNI" style="background: white;">
+
+            <input class="btn" type="submit" name="btnLogin" value="Crear cuenta">
+        </form> 
+    </div>
 </body>
 </html>

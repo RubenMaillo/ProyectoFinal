@@ -716,8 +716,8 @@ footer{
 }
 
 .apOpcion{
-    width: 10em !important;
-    height: 10em !important;
+    width: 8em !important;
+    height: 8em !important;
     border: 3px solid rgb(73, 73, 73);
     border-radius: 25px;
     margin: 0 !important;
