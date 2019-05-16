@@ -20,23 +20,13 @@
         <link rel="icon" href ="/imagenes/AluCine1.png" type = "image/x-icon">
 </head>
 <body id="registro">
+    <h2 class="title">Salas AluCine</h2>
 
-    <div class="flex" style="flex-direction: column;">
-    <h2 class="title">Usuario AluCine | Modifica un Usuario</h2>
-
-    <form action="/editUsuario" method="POST">
-        <input type="text" name="user" value='<%=usu.email %>' placeholder="Usuario (e-mail)*">
-        <input type="text" name="_id" value='<%=usu._id %>' hidden>
-        <input type="password" name="pass" value='<%=usu.password %>' placeholder="Contraseña">
-        <input type="password" name="pass2" value='<%=usu.password %>' placeholder="Repite la Contraseña">
-
-        <input type="text" name="nombre" value='<%=usu.nombre %>' placeholder="Nombre*">
-        <input type="text" name="apellidos" value='<%=usu.apellidos %>' placeholder="Apellidos*">
-        <input type="text" name="telefono" value='<%=usu.telefono %>' placeholder="Nº de teléfono">
-        <input type="text" name="dni" value='<%=usu.dni %>' placeholder="Nº de DNI">
-
-        <input class="btn" type="submit" name="btnLogin" value="Crear cuenta">
+    <form action="/editSala" method="POST">
+        <input type="text" name="numSala" value='<%=sala.numSala %>' placeholder="Número Sala">
+        <input type="number" name="capacidad" value='<%=sala.capacidad %>' placeholder="Capacidad">
+        <input type="text" name="_id" value='<%=sala._id %>' hidden>
+        <input class="btn" type="submit" name="btnLogin" value="Crear Sala">
     </form>
-    </div>
 </body>
 </html>
