@@ -952,6 +952,7 @@ table{
     border-top: 0.5px solid #CB3030 !important;
 }
 
+
 .datos tr{
     cursor: pointer !important;
 }
@@ -960,3 +961,4 @@ table{
 .aviso{
     margin-top: 50px;
 }
+

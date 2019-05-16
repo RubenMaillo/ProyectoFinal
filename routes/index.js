@@ -182,9 +182,10 @@ res.render('backUsuarios',{
   pagAnte: usu[4],
   busque: req.query.busqueda } );
 });
-router.get('/borrarUsu/:id', async function(req){
+router.get('/borrarUsu/:id', async function(req,res){
   console.log(req.params.id);
   await databaseUsuarios.borrarUsu(req);
+  res.redirect('/backUsuarios/1');
 });
 router.get('/editUsu/:id',async function(req,res) {
 console.log(req.params.id);
@@ -193,8 +194,9 @@ console.log(req.params.id);
     usu : usu
   });
 });
-router.post('/editUsuario', async function(req){
+router.post('/editUsuario', async function(req,res){
   usu = await databaseUsuarios.editUsu(req);
+  res.redirect('/backUsuarios/1');
 });
 
 
@@ -270,6 +272,25 @@ router.get('/busquedaPromos/:pagina',async function(req, res) {
     pagAnte: promos[4],
     busque: req.query.busqueda
   } );
+});
+
+router.get('/borrarPromo/:id', async function(req,res){
+  await databasePromos.borrarPromo(req);
+  console.log("waka?")
+
+});
+
+router.get('/editPromo/:id',async function(req,res) {
+console.log(req.params.id);
+promo = await databasePromos.datosPromo(req);
+  res.render('editPromocion',{
+    promo : promo
+  });
+});
+
+router.post('/editPromocion', async function(req,res){
+  promo = await databasePromos.editPromo(req);
+  res.redirect('/backPromos/1');
 });
 
 //HORARIOOOOSSSSSSSSSSSSSSSSSS
@@ -354,20 +375,21 @@ router.get('/detallesPelicula/:id', async function(req, res, next) {
   res.render('detallesPelicula', { title: 'AluCine' , pelicula:pelicula,nombre:req.session.nombre,apellidos:'',horarios:horario});
 });
 
-router.get('/borrarPeli/:id', async function(req){
+router.get('/borrarPeli/:id', async function(req,res){
   console.log(req.params.id);
-  await databaseUsuarios.borrarUsu(req);
+  await databasePelis.borrarPeli(req);
 });
 router.get('/editPeli/:id',async function(req,res) {
 console.log(req.params.id);
-  usu = await databaseUsuarios.busquedaUsu(req);
+peli = await databasePelis.datosPeli(req);
   res.render('editPelicula',{
-    usu : usu
+    peli : peli
   });
 });
 
-router.post('/editPelicula', async function(req){
-  usu = await databaseUsuarios.editUsu(req);
+router.post('/editPelicula', async function(req,res){
+  peli = await databasePelis.editPeli(req);
+  res.redirect('/backPeliculas/1');
 });
 
 

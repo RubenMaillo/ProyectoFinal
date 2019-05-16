@@ -22,11 +22,11 @@
 <body id="registro">
     <h2 class="title">Peli AluCine</h2>
 
-    <form action="/addPeli" method="POST">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="anio" placeholder="año">
+    <form action="/editPelicula" method="POST">
+        <input type="text" name="nombre" value="<%=peli.nombre %>" placeholder="nombre">
+        <input type="text" name="anio" value="<%=peli.anio %>" placeholder="año">
         <div id="generos">
-        
+        <input type="text" name="_id" value='<%=peli._id %>' hidden>
         <select name="genero">
             <option value="" selected>Elija una</option>
             <option value="Comedia">Comedia</option>
@@ -39,9 +39,9 @@
             <option value="Otros">Otros</option>
         </select>
         </div>
-        <input type="text" name="descripcion" placeholder="descripcion">
-        <input type="text" name="trailer" placeholder="trailer">
-        <input type="text" name="poster" placeholder="poster">
+        <input type="text" name="descripcion" value="<%=peli.descripcion %>" placeholder="descripcion">
+        <input type="text" name="trailer" value="<%=peli.trailer %>" placeholder="trailer">
+        <input type="text" name="poster" value="<%=peli.poster %>" placeholder="poster">
         
         <input class="btn" type="submit" name="btnLogin" value="Crear peli">
         
