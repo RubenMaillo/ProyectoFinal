@@ -29,10 +29,6 @@
             <a href="/backHorarios/1"><i class="fas fa-hourglass-end"></i>&nbsp;&nbsp;Horarios</a>
             <a href="/backSalas/1"><i class="fas fa-home"></i>&nbsp;&nbsp;Salas</a>
         </div>
-
-        <div class="sesionLat">
-            <p>Sesión</p>
-        </div>
     </section>
 
     <section class="contenido">
@@ -68,7 +64,7 @@
                 </tr>
                 <%if(typeof salas!='undefined'){%>
                 <% for(var i=0; i< salas.length; i++){%>
-                    <tr>
+                    <tr class="tbody" id="<%= salas[i]._id %>">
                         <td><%= salas[i].numSala %></td>
                         <td><%= salas[i].capacidad %></td>
                     </tr>
@@ -92,4 +88,41 @@
         </div>
     </section>
 </body>
+<script>
+    function cambio(){
+        if($('tr').hasClass('select')){
+            $('#bBorrar').attr('disabled', false);
+            if($('tr.select').length==1){
+                $('#bEditar').attr('disabled', false);
+            }else{
+                $('#bEditar').attr('disabled', true);
+            }
+        }else{
+            $('#bBorrar').attr('disabled', true);
+            $('#bEditar').attr('disabled', true);
+        }
+    }
+
+    $('tr.tbody').click(function(){
+        $(this).toggleClass('select');
+        cambio();
+    });
+
+    //borrar las salas
+    $('#bBorrar').click(function(){
+        $('tr.select').each(function(){
+            var id = $(this).attr('id');
+            var url = "/borrarSala/"+id;
+            $.ajax({
+                url:url
+            });
+        });
+        alert("se han eliminado las salas");
+        window.location.href='/backSalas/1';
+    });
+    //edit sala
+    $('#bEditar').click(function(){
+        window.location.href='/editSala/'+$('tr.select').attr('id');
+    });
+</script>
 </html>
