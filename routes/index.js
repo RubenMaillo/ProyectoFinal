@@ -224,13 +224,13 @@ router.get('/busquedaPromos/:pagina',async function(req, res) {
 
 router.get('/borrarPromo/:id', async function(req,res){
   await databasePromos.borrarPromo(req);
-  res.redirect('/backPromos/1');
+  console.log("waka?")
+
 });
 
 router.get('/editPromo/:id',async function(req,res) {
 console.log(req.params.id);
 promo = await databasePromos.datosPromo(req);
-console.log("iolaoaloa"+promo)
   res.render('editPromocion',{
     promo : promo
   });

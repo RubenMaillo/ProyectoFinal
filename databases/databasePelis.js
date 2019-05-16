@@ -76,7 +76,7 @@ exports.borrarPeli = async function(req){
  exports.editPeli = async function(req){
     console.log(req.body._id);
     var peli = await Peli.updateOne(
-       {_id:req.body._id,},
+       {_id:req.body._id},
        {
         nombre:req.body.nombre,
         anio:req.body.anio,

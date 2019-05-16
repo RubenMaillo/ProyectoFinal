@@ -55,7 +55,7 @@ exports.borrarPromo = async function(req){
   }
  exports.editPromo = async function(req){
     var promo = await Promo.updateOne(
-       {_id:req.body._id,},
+       {_id:req.body._id},
        {
         tipoPromo:req.body.tipo,
         descripcion:req.body.descrip,
