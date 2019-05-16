@@ -54,7 +54,7 @@ exports.borrarPromo = async function(req){
     return resp;
   }
  exports.editPromo = async function(req){
-    var usu = await Promo.updateOne(
+    var promo = await Promo.updateOne(
        {_id:req.body._id,},
        {
         tipoPromo:req.body.tipo,
@@ -66,7 +66,7 @@ exports.borrarPromo = async function(req){
     );
  }
  exports.datosPromo = async function(req){
-    var id=req.params.id;
+    var id = req.params.id;
     var promo = await Promo.findOne({_id:id});
     return promo;
 }

@@ -115,6 +115,7 @@
         $('tr.select').each(function(){
             var id = $(this).attr('id');
             var url = "/borrarPromo/"+id;
+            alert(url);
             $.ajax({
                 url:url
             });
