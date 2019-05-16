@@ -30,19 +30,19 @@
     <section class="promo">
         <div class="cabecera">
             <div>
-                <h2 class="title">PROMOCIONES</h2>
+                <h2 class="title">EN CARTELERA</h2>
             </div>
             <div>
-                <button class="verRojo">Ver más</button>
+                <a href="cartelera"><button class="verRojo">Ver más</button></a>
             </div>
         </div>
         
         <div class="caratulas">
-            <a href="detallesPelicula"><div><img src="imagenes/d1.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/d2.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/d3.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/d4.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/d5.png" alt=""></div></a>
+            <% for(var i=0; i< pelis.length; i++){ %>
+                <a href="detallesPelicula/<%= pelis[i]._id %>"><div><img src="<%= pelis[i].poster %>" alt=""></div></a>
+            <%
+                if(i==4){i = pelis.length();}
+            }%>
         </div>
     </section>
 
@@ -52,17 +52,17 @@
                 <h2 class="title">PRÓXIMAMENTE...</h2>
             </div>
             <div>
-                <button class="verGris">Ver más</button>
+               <a href="estrenos"><button class="verGris">Ver más</button></a>
             </div>
         </div>
         
 
         <div class="caratulas">
-            <a href="detallesPelicula"><div><img src="imagenes/ldcq.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/ler.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/ll.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/lve.jpg" alt=""></div></a>
-            <a href="detallesPelicula"><div><img src="imagenes/dumbo.jpg" alt=""></div></a>
+            <div><img src="imagenes/ldcq.jpg" alt=""></div>
+            <div><img src="imagenes/ler.jpg" alt=""></div>
+            <div><img src="imagenes/ll.jpg" alt=""></div>
+            <div><img src="imagenes/lve.jpg" alt=""></div>
+            <div><img src="imagenes/dumbo.jpg" alt=""></div>
         </div>
     </section>
 

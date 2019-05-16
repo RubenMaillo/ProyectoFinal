@@ -31,7 +31,7 @@ exports.verButaca = async function(req){
     return asiento;
 }
 exports.verEntradas = async function(req){
-    var entradas = await Entrada.find();
-    console.log(entradas);
+    var entradas = await Entrada.find({idHorario:req.query.hora});
+    //console.log(entradas.fila);
     return entradas;
 }
