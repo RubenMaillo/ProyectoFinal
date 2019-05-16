@@ -219,6 +219,17 @@ router.get('/busquedaPromos/:pagina',async function(req, res) {
     busque: req.query.busqueda
   } );
 });
+router.get('/borrarPromo/:id', async function(req){
+  console.log(req.params.id);
+  await databasePromos.borrarPeli(req);
+});
+router.get('/editPromo/:id',async function(req,res) {
+console.log(req.params.id);
+peli = await databasePromos.datosPromo(req);
+  res.render('editPelicula',{
+    peli : peli
+  });
+});
 
 //HORARIOOOOSSSSSSSSSSSSSSSSSS
 router.get('/registroHorario', async function(req, res, next) {
@@ -304,18 +315,18 @@ router.get('/detallesPelicula/:id', async function(req, res, next) {
 
 router.get('/borrarPeli/:id', async function(req){
   console.log(req.params.id);
-  await databaseUsuarios.borrarUsu(req);
+  await databasePelis.borrarPeli(req);
 });
 router.get('/editPeli/:id',async function(req,res) {
 console.log(req.params.id);
-  usu = await databaseUsuarios.busquedaUsu(req);
+peli = await databasePelis.datosPeli(req);
   res.render('editPelicula',{
-    usu : usu
+    peli : peli
   });
 });
 
 router.post('/editPelicula', async function(req){
-  usu = await databaseUsuarios.editUsu(req);
+  peli = await databasePelis.editPeli(req);
 });
 
 

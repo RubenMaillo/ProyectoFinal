@@ -70,24 +70,21 @@ exports.busquedaPelis = async function(req){
 }
 exports.borrarPeli = async function(req){
     var id = req.params.id;
-    console.log(id);
-    var resp = await Usuario.deleteOne({_id:id});
-    console.log(resp);
+    var resp = await Peli.deleteOne({_id:id});
     return resp;
   }
  exports.editPeli = async function(req){
     console.log(req.body._id);
-    var usu = await Usuario.updateOne(
+    var peli = await Peli.updateOne(
        {_id:req.body._id,},
        {
-          dni:req.body.dni,
-          nombre:req.body.nombre,
-          apellidos:req.body.apellidos,
-          email:req.body.user,
-          password: req.body.pass,
-          telefono:req.body.telefono
+        nombre:req.body.nombre,
+        anio:req.body.anio,
+        genero:req.body.genero,
+        descripcion:req.body.descripcion,
+        trailer:req.body.trailer,
+        poster:req.body.poster
        },
- 
-       
+
     );
  }

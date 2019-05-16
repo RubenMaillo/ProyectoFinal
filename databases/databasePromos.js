@@ -48,3 +48,25 @@ exports.busquedaPromos = async function(req){
     var datos = [v1,v2,v3,v4,v5];
     return datos;
 }
+exports.borrarPromo = async function(req){
+    var id = req.params.id;
+    var resp = await Promo.deleteOne({_id:id});
+    return resp;
+  }
+ exports.editPromo = async function(req){
+    var usu = await Promo.updateOne(
+       {_id:req.body._id,},
+       {
+        tipoPromo:req.body.tipo,
+        descripcion:req.body.descrip,
+        descuento:req.body.descu
+       },
+ 
+       
+    );
+ }
+ exports.datosPromo = async function(req){
+    var id=req.params.id;
+    var promo = await Promo.findOne({_id:id});
+    return promo;
+}
