@@ -960,3 +960,12 @@ table{
 .aviso{
     margin-top: 50px;
 }
+
+.prueba{
+    width: 100% !important;
+}
+
+.estrenos{
+    width: 100% !important;
+    background: #941C2F;
+}
